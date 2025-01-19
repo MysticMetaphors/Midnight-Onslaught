@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://cm1wcrq862lls"]
+
+[ext_resource type="Script" path="res://Scripts/explosion.gd" id="1_dd81t"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fro8q"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_gv47k"]
+offsets = PackedFloat32Array(0, 0.772727, 1)
+colors = PackedColorArray(0.6, 0.666667, 0.309804, 1, 0.530236, 0.45037, 0.22739, 1, 0.76855, 0.213428, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2sbyy"]
+gradient = SubResource("Gradient_gv47k")
+
+[sub_resource type="Curve" id="Curve_pvuox"]
+_data = [Vector2(0.0942029, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.593407), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rylja"]
+curve = SubResource("Curve_pvuox")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vlh5k"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -109.5
+radial_velocity_max = 64.31
+gravity = Vector3(0, 0, 0)
+tangential_accel_min = -10.68
+scale_min = 0.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_rylja")
+color = Color(0.600427, 0.665042, 0.30835, 1)
+color_ramp = SubResource("GradientTexture1D_2sbyy")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uy32w"]
+radius = 60.075
+
+[node name="explosion" type="Node2D"]
+position = Vector2(63, 27)
+script = ExtResource("1_dd81t")
+
+[node name="particle_boss_proj" type="Node2D" parent="."]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="particle_boss_proj"]
+material = SubResource("CanvasItemMaterial_fro8q")
+position = Vector2(0, 1)
+amount = 2000
+process_material = SubResource("ParticleProcessMaterial_vlh5k")
+speed_scale = 4.0
+explosiveness = 0.65
+collision_base_size = 0.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_uy32w")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

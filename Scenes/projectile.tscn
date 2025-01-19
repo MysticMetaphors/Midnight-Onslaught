@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://bumn8sue3po86"]
+
+[ext_resource type="Script" path="res://Scripts/projectile.gd" id="1_pwmsf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yspax"]
+radius = 5.09902
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fro8q"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_gv47k"]
+offsets = PackedFloat32Array(0, 0.663934, 1)
+colors = PackedColorArray(0.797587, 0.392911, 0, 1, 0.889109, 0.297098, 0, 1, 0.184306, 0.0249159, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2sbyy"]
+gradient = SubResource("Gradient_gv47k")
+
+[sub_resource type="Curve" id="Curve_pvuox"]
+_data = [Vector2(0.0942029, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.593407), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rylja"]
+curve = SubResource("Curve_pvuox")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vlh5k"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 11.07
+angle_min = -109.5
+radial_velocity_max = 64.31
+gravity = Vector3(0, -98, 0)
+linear_accel_min = -56.6
+linear_accel_max = -56.6
+radial_accel_min = 24.1
+radial_accel_max = 26.51
+tangential_accel_min = -10.68
+tangential_accel_max = 23.06
+scale_min = 0.0
+scale_max = 3.14
+scale_curve = SubResource("CurveTexture_rylja")
+color = Color(0.600427, 0.665042, 0.30835, 1)
+color_ramp = SubResource("GradientTexture1D_2sbyy")
+
+[node name="projectile" type="Area2D"]
+rotation = -0.00711913
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_pwmsf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.13687e-13, 1.13687e-13)
+rotation = 0.0234135
+shape = SubResource("CircleShape2D_yspax")
+
+[node name="particle_boss_proj" type="Node2D" parent="."]
+position = Vector2(-4.76837e-07, -4.76837e-07)
+rotation = 0.0389406
+scale = Vector2(-0.796726, -0.798452)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="particle_boss_proj"]
+material = SubResource("CanvasItemMaterial_fro8q")
+position = Vector2(-9.53674e-07, -9.53674e-07)
+amount = 2000
+process_material = SubResource("ParticleProcessMaterial_vlh5k")
+lifetime = 0.3
+speed_scale = 6.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=3 uid="uid://bt7v1o0p7yur5"]
+
+[ext_resource type="Script" path="res://Scripts/Spinning_sword.gd" id="1_30bqc"]
+[ext_resource type="Texture2D" uid="uid://bd44vdj05l6u4" path="res://Assets/Exotic Swords.png" id="1_mltog"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwvpm"]
+size = Vector2(20, 50)
+
+[node name="spinning_sword" type="Node2D"]
+script = ExtResource("1_30bqc")
+rotation_speed = 7.0
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="Marker2D"]
+show_behind_parent = true
+position = Vector2(1, -29)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/Area2D"]
+shape = SubResource("RectangleShape2D_gwvpm")
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D/Area2D/CollisionShape2D"]
+show_behind_parent = true
+position = Vector2(0, -2)
+rotation = -0.704163
+scale = Vector2(2.04167, 2.39583)
+texture = ExtResource("1_mltog")
+hframes = 3
+vframes = 3
+frame = 4
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Marker2D/Area2D"]
+position = Vector2(0, 61)
+rotation = -3.1393
+shape = SubResource("RectangleShape2D_gwvpm")
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D/Area2D/CollisionShape2D2"]
+show_behind_parent = true
+position = Vector2(0, -2)
+rotation = -0.704163
+scale = Vector2(2.04167, 2.39583)
+texture = ExtResource("1_mltog")
+hframes = 3
+vframes = 3
+frame = 4
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Marker2D/Area2D"]
+position = Vector2(33, 29)
+rotation = 1.57178
+shape = SubResource("RectangleShape2D_gwvpm")
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D/Area2D/CollisionShape2D3"]
+show_behind_parent = true
+position = Vector2(0, -2)
+rotation = -0.704163
+scale = Vector2(2.04167, 2.39583)
+texture = ExtResource("1_mltog")
+hframes = 3
+vframes = 3
+frame = 4
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Marker2D/Area2D"]
+position = Vector2(-33, 29)
+rotation = -1.56752
+shape = SubResource("RectangleShape2D_gwvpm")
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D/Area2D/CollisionShape2D4"]
+show_behind_parent = true
+position = Vector2(0, -2)
+rotation = -0.704163
+scale = Vector2(2.04167, 2.39583)
+texture = ExtResource("1_mltog")
+hframes = 3
+vframes = 3
+frame = 4
+
+[connection signal="body_entered" from="Marker2D/Area2D" to="." method="_on_area_2d_body_entered"]
