@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dm35y6wcuhk8s"]
+
+[ext_resource type="PackedScene" uid="uid://bgx151r00tlsu" path="res://Entities-Scene/player.tscn" id="1_r0b3k"]
+[ext_resource type="Script" path="res://Scripts/test_dummy.gd" id="2_7ym20"]
+[ext_resource type="Texture2D" uid="uid://bx6wssiy3a4dy" path="res://icon.svg" id="3_xmoei"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_58iyt"]
+
+[node name="Test_area" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_r0b3k")]
+
+[node name="Test_dummy" type="CharacterBody2D" parent="."]
+position = Vector2(284, 219)
+script = ExtResource("2_7ym20")
+
+[node name="Icon" type="Sprite2D" parent="Test_dummy"]
+position = Vector2(-1, 3.00001)
+scale = Vector2(0.664063, 0.683594)
+texture = ExtResource("3_xmoei")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Test_dummy"]
+shape = SubResource("CircleShape2D_58iyt")

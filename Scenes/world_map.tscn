@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://cyj0067kbc3mj"]
+[gd_scene load_steps=35 format=4 uid="uid://cyj0067kbc3mj"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy Spawner.gd" id="1_6tef6"]
 [ext_resource type="PackedScene" uid="uid://bgx151r00tlsu" path="res://Entities-Scene/player.tscn" id="2_wylrd"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://cy50h25peblc" path="res://Assets/decorative.png" id="3_pl4wi"]
 [ext_resource type="PackedScene" uid="uid://bcxtkko6rsvew" path="res://Scenes/time_counter.tscn" id="4_7hftx"]
 [ext_resource type="Shader" path="res://Assets/Fog.gdshader" id="5_xume2"]
-[ext_resource type="FontFile" uid="uid://dclemsn3p7du4" path="res://Assets/Wacky Pixels.ttf" id="8_pbkcl"]
 
 [sub_resource type="Gradient" id="Gradient_fkc0c"]
 offsets = PackedFloat32Array(0, 0.713115, 1)
@@ -2872,10 +2871,6 @@ _data = {
 }
 point_count = 5
 
-[sub_resource type="LabelSettings" id="LabelSettings_d3uxe"]
-font = ExtResource("8_pbkcl")
-font_size = 50
-
 [node name="WorldMap" type="Node2D"]
 script = ExtResource("1_6tef6")
 
@@ -2924,15 +2919,5 @@ rotation = -0.00743145
 [node name="Timer" type="Timer" parent="Path2D"]
 wait_time = 0.1
 autostart = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-offset_left = 32.0
-offset_top = 54.0
-offset_right = 98.0
-offset_bottom = 93.0
-text = "000"
-label_settings = SubResource("LabelSettings_d3uxe")
 
 [connection signal="timeout" from="Path2D/Timer" to="." method="_on_timer_timeout"]

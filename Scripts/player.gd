@@ -1,23 +1,27 @@
 extends CharacterBody2D
 
 @onready var animation_player = $AnimationPlayer
-@onready var exprience = $Exp
+@onready var exprience = $CanvasLayer/Exp
 @export var health = 100.0
-const SPEED = 150.0
+const SPEED: float = 150.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var viewport_instance = preload("res://Scenes/viewport.tscn").instantiate()
 var game_over_tcsn = preload("res://Scenes/game_over.tscn").instantiate()
 
+#var max_health
+var max_exp: float = 100.0
+var expr: float = 0.0
+
 signal player_died
 
-var expr: float = 0.0
-var exp_max_value = 100
-
 func _ready():
-	$health.value = health
+	$CanvasLayer/health.value = health
+	$CanvasLayer/Exp.max_value
+
 	exprience.value = expr
+	exprience.max_value = max_exp
 
 func _physics_process(_delta):
 	var direction_side = Input.get_axis("ui_left", "ui_right")
@@ -48,7 +52,7 @@ func animation_handler():
 
 func player_take_damage(amount):
 	health -= amount
-	$health.value = health
+	$CanvasLayer/health.value = health
 	#print(health)
 	if health <= 0 or Input.is_action_just_pressed("die"):
 		#print("die")
@@ -61,7 +65,14 @@ func player_take_damage(amount):
 
 func exprience_gain(exp_amount):
 	expr += exp_amount
-	#if expr <= exp_val:
-		#pass
+	if expr >= max_exp:
+		level_up()
+		#print(max_exp)
+		#print($Exp.max_value)
 	exprience.value = expr
 	#print($Exp.value)
+
+func level_up():
+	expr = 0
+	max_exp += (100 * 0.1)
+	print(max_exp)

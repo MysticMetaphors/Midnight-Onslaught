@@ -206,7 +206,7 @@ avoidance_mask = 19
 debug_path_custom_color = Color(0.732106, 0, 0.0510214, 1)
 
 [node name="Follow" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.4
 autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -242,8 +242,6 @@ metadata/_edit_use_anchors_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
 position = Vector2(-3, 0)
 shape = SubResource("CircleShape2D_rwyr4")
-disabled = true
-debug_color = Color(0.994897, 0, 0.214532, 0.42)
 
 [connection signal="timeout" from="Follow" to="." method="_on_follow_timeout"]
 [connection signal="body_entered" from="Attack" to="." method="_on_attack_body_entered"]
