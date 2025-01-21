@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpu4ddyhc25ox"]
+
+[ext_resource type="Script" path="res://Scenes/Item_and_weapons/scorching_seal.gd" id="1_kkeo8"]
+
+[sub_resource type="Gradient" id="Gradient_1ec71"]
+offsets = PackedFloat32Array(0, 0.393443, 0.729508, 1)
+colors = PackedColorArray(1, 0.341176, 0.00392157, 1, 0.996078, 0.494118, 0.00392157, 1, 0.996078, 0.654902, 0.00392157, 1, 0.996078, 0.807843, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_401cf"]
+gradient = SubResource("Gradient_1ec71")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_maqsj"]
+emission_shape_scale = Vector3(1.5, 1, 1)
+emission_shape = 2
+emission_sphere_radius = 54.22
+gravity = Vector3(0, -5, 0)
+color_ramp = SubResource("GradientTexture1D_401cf")
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6xcam"]
+radius = 51.9875
+height = 160.056
+
+[node name="Scorching Seal" type="Node2D"]
+script = ExtResource("1_kkeo8")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 1548
+process_material = SubResource("ParticleProcessMaterial_maqsj")
+speed_scale = 13.29
+explosiveness = 0.19
+trail_enabled = true
+trail_lifetime = 0.5
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = -1.56497
+shape = SubResource("CapsuleShape2D_6xcam")
+
+[node name="take_damage" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

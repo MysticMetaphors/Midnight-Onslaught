@@ -1,11 +1,9 @@
-[gd_scene load_steps=35 format=4 uid="uid://cyj0067kbc3mj"]
+[gd_scene load_steps=33 format=4 uid="uid://cyj0067kbc3mj"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy Spawner.gd" id="1_6tef6"]
 [ext_resource type="PackedScene" uid="uid://bgx151r00tlsu" path="res://Entities-Scene/player.tscn" id="2_wylrd"]
 [ext_resource type="Texture2D" uid="uid://cym2l1rpwglm3" path="res://Assets/mainlevbuild.png" id="2_y6dvn"]
-[ext_resource type="PackedScene" uid="uid://cx67bkadeqp1o" path="res://Scenes/projectile_loader.tscn" id="3_ke8ex"]
 [ext_resource type="Texture2D" uid="uid://cy50h25peblc" path="res://Assets/decorative.png" id="3_pl4wi"]
-[ext_resource type="PackedScene" uid="uid://bcxtkko6rsvew" path="res://Scenes/time_counter.tscn" id="4_7hftx"]
 [ext_resource type="Shader" path="res://Assets/Fog.gdshader" id="5_xume2"]
 
 [sub_resource type="Gradient" id="Gradient_fkc0c"]
@@ -2897,15 +2895,6 @@ tile_set = SubResource("TileSet_me0qh")
 
 [node name="Player" parent="." instance=ExtResource("2_wylrd")]
 position = Vector2(578, 351)
-
-[node name="projectile_launcher" parent="Player" instance=ExtResource("3_ke8ex")]
-position = Vector2(1, 1)
-
-[node name="Time_counter" parent="Player" instance=ExtResource("4_7hftx")]
-offset_left = 286.0
-offset_top = -191.0
-offset_right = 286.0
-offset_bottom = -191.0
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2(71.3778, 208.109)

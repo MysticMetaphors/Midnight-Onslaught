@@ -75,4 +75,4 @@ func exprience_gain(exp_amount):
 func level_up():
 	expr = 0
 	max_exp += (100 * 0.1)
-	print(max_exp)
+	#print(max_exp)	
