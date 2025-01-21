@@ -2917,7 +2917,11 @@ position = Vector2(-176, 951.676)
 rotation = -0.00743145
 
 [node name="Timer" type="Timer" parent="Path2D"]
-wait_time = 0.1
+autostart = true
+
+[node name="Spawn_Controller" type="Timer" parent="Path2D"]
+wait_time = 30.0
 autostart = true
 
 [connection signal="timeout" from="Path2D/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Path2D/Spawn_Controller" to="." method="_on_spawn_controller_timeout"]

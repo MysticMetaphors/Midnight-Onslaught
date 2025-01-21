@@ -3,6 +3,7 @@ extends Node2D
 @onready var player_check = $Player
 
 var bodies = 0
+var max_bodies = 40
 
 func _ready():
 	var frames = Engine.get_frames_per_second()
@@ -13,7 +14,7 @@ func _ready():
 func spawner():
 	var enemy_scene = preload("res://Entities-Scene/enemy_temp.tscn").instantiate()
 	$Path2D/PathFollow2D.progress_ratio = randf()
-	if is_instance_valid(enemy_scene) and 150 >= bodies:
+	if is_instance_valid(enemy_scene) and max_bodies >= bodies:
 		enemy_scene.global_position = $Path2D/PathFollow2D.global_position
 		call_deferred("add_child", enemy_scene)
 		bodies += 1
@@ -37,3 +38,13 @@ func _on_exp_gain(exp_amount):
 	#$CanvasLayer/Label.text = '%03d' % [bodies]
 #func spawn_interval():
 	#$Path2D/Timer.wait_time = 15
+
+func _on_spawn_controller_timeout():
+	max_bodies += 10
+	if $Path2D/Timer.wait_time <= 0.2:
+		$Path2D/Timer.wait_time = 0.1
+		$Path2D/Spawn_Controller.stop()
+		#print("last_update: ", $Path2D/Timer.wait_time)
+	else: 
+		$Path2D/Timer.wait_time -= (0.2/100*(100))
+		#print("wait_time set to: ", $Path2D/Timer.wait_time)
