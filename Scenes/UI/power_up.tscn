@@ -1,0 +1,56 @@
+[gd_scene load_steps=2 format=3 uid="uid://bag3qyl4xaiaj"]
+
+[ext_resource type="Texture2D" uid="uid://bd44vdj05l6u4" path="res://Assets/Exotic Swords.png" id="1_526qw"]
+
+[node name="Power_Up" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "CHOOSE A WEAPON"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.86
+alignment = 1
+
+[node name="PanelContainer3" type="PanelContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ItemList" type="ItemList" parent="VBoxContainer/HBoxContainer/PanelContainer3"]
+layout_mode = 2
+item_count = 3
+max_columns = 3
+icon_mode = 0
+item_0/text = "HAHA"
+item_0/icon = ExtResource("1_526qw")
+item_1/text = "s"
+item_1/icon = ExtResource("1_526qw")
+item_2/text = "ed"
+item_2/icon = ExtResource("1_526qw")
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "CHOOSE A WEAPON"
+horizontal_alignment = 1
+vertical_alignment = 1
