@@ -5,7 +5,7 @@ const SPEED = 50
 @onready var path:=  $NavigationAgent2D as NavigationAgent2D
 @onready var anim = $AnimationPlayer
 
-@export var attack = 20
+@export var attack = 20.0
 @export var exp_amount: float = 20.0
 
 signal enemy_died(exp_amount)
@@ -16,9 +16,6 @@ var player_in = true
 
 var can_attack = true
 var moving = true
-
-#func _ready() -> void:
-	#find_path()
 
 func _physics_process(delta):
 	#var direction = to_local(path.get_next_path_position()).normalized()
@@ -33,26 +30,7 @@ func _physics_process(delta):
 			$Sprite2D.flip_h = false
 	else:
 		anim.play("idle")
-	#if player_in == true:
-		#velocity = direction * SPEED 
-		
-	#else:
-		#moving = true
-		#velocity = Vector2.ZERO 
-		#anim.play("idle")
 	move_and_slide()
-	
-
-#func find_path():
-	#if is_instance_valid(player):
-		#if player:
-			#path.target_position = player.global_position
-	#else:
-		#path.velocity = Vector2.ZERO
-
-#func _on_follow_timeout():
-	#if player_in == true and player:
-		#find_path()
 
 func enemy_take_damage(amount):
 	health -= amount
@@ -79,5 +57,4 @@ func _on_attack_body_entered(body):
 		anim.play("attack")
 		body.player_take_damage(attack)
 		can_attack = false
-		get_tree().create_timer(1).timeout
 		can_attack = true

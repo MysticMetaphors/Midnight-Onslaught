@@ -36,8 +36,6 @@ func _on_exp_gain(exp_amount):
 			player_check.exprience_gain(exp_amount)
 			bodies -= 1
 	#$CanvasLayer/Label.text = '%03d' % [bodies]
-#func spawn_interval():
-	#$Path2D/Timer.wait_time = 15
 
 func _on_spawn_controller_timeout():
 	max_bodies += 10

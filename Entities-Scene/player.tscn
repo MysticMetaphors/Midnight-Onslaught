@@ -242,3 +242,5 @@ texture_under = ExtResource("6_1g13r")
 texture_progress = ExtResource("7_ojxvp")
 texture_progress_offset = Vector2(0, 15)
 tint_under = Color(0.642675, 0.616273, 0.598622, 1)
+
+[connection signal="player_level_up" from="." to="." method="_on_player_level_up"]

@@ -9,16 +9,16 @@ const SPEED: float = 150.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var viewport_instance = preload("res://Scenes/viewport.tscn").instantiate()
 var game_over_tcsn = preload("res://Scenes/game_over.tscn").instantiate()
-
+var increase_amount = 0.1
 #var max_health
 var max_exp: float = 100.0
 var expr: float = 0.0
 
 signal player_died
+signal player_level_up(increase_amount)
 
 func _ready():
 	$CanvasLayer/health.value = health
-	$CanvasLayer/Exp.max_value
 
 	exprience.value = expr
 	exprience.max_value = max_exp
@@ -66,13 +66,14 @@ func player_take_damage(amount):
 func exprience_gain(exp_amount):
 	expr += exp_amount
 	if expr >= max_exp:
-		level_up()
+		_on_player_level_up()
 		#print(max_exp)
 		#print($Exp.max_value)
 	exprience.value = expr
 	#print($Exp.value)
 
-func level_up():
+func _on_player_level_up():
 	expr = 0
 	max_exp += (100 * 0.1)
+	emit_signal("player_level_up", increase_amount)
 	#print(max_exp)	
