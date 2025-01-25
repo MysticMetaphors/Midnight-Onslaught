@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dm35y6wcuhk8s"]
+[gd_scene load_steps=7 format=3 uid="uid://dm35y6wcuhk8s"]
 
 [ext_resource type="PackedScene" uid="uid://bgx151r00tlsu" path="res://Entities-Scene/player.tscn" id="1_r0b3k"]
 [ext_resource type="Script" path="res://Scripts/test_dummy.gd" id="2_7ym20"]
 [ext_resource type="Texture2D" uid="uid://bx6wssiy3a4dy" path="res://icon.svg" id="3_xmoei"]
 [ext_resource type="PackedScene" uid="uid://cpx32uwbc4l46" path="res://Entities-Scene/enemy_temp.tscn" id="4_6fau8"]
+[ext_resource type="PackedScene" uid="uid://c7bg53ln23nv3" path="res://Entities-Scene/skeleton.tscn" id="5_13vas"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_58iyt"]
 
@@ -25,3 +26,6 @@ shape = SubResource("CircleShape2D_58iyt")
 
 [node name="enemy_temp" parent="." instance=ExtResource("4_6fau8")]
 position = Vector2(380, 145)
+
+[node name="Skeleton" parent="." instance=ExtResource("5_13vas")]
+position = Vector2(293, 295)

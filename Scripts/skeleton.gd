@@ -50,7 +50,7 @@ func opt_death():
 	$Hitbox.disabled = true
 	$Attack/CollisionShape2D.disabled = true
 
-func _on_attack_body_entered(body):
+func _on_area_2d_body_entered(body):
 	if body.has_method("player_take_damage") and can_attack:
 		anim.play("attack")
 		body.player_take_damage(attack)

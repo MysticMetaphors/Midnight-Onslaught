@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dar1cvdy8788a" path="res://Assets/AnimationSheet_Character.png" id="3_vqgv6"]
 [ext_resource type="PackedScene" uid="uid://dwpw7llsxr6jc" path="res://Scenes/viewport.tscn" id="4_doqgl"]
 [ext_resource type="PackedScene" uid="uid://bcxtkko6rsvew" path="res://Scenes/time_counter.tscn" id="5_5n4tf"]
-[ext_resource type="PackedScene" uid="uid://bpu4ddyhc25ox" path="res://Scenes/Item_and_weapons/scorching_seal.tscn" id="5_e22n8"]
+[ext_resource type="PackedScene" uid="uid://bpu4ddyhc25ox" path="res://Scenes/Item_and_weapons/Scorching Seal/scorching_seal.tscn" id="5_e22n8"]
 [ext_resource type="Texture2D" uid="uid://dkd4r1euekmh8" path="res://Assets/greenbar (3).png" id="6_1g13r"]
 [ext_resource type="Texture2D" uid="uid://clq8h57vnjj6y" path="res://Assets/greenbar (2).png" id="7_ojxvp"]
 

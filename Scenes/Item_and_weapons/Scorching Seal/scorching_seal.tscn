@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bpu4ddyhc25ox"]
 
-[ext_resource type="Script" path="res://Scenes/Item_and_weapons/scorching_seal.gd" id="1_kkeo8"]
+[ext_resource type="Script" path="res://Scenes/Item_and_weapons/Scorching Seal/scorching_seal.gd" id="1_kkeo8"]
 
 [sub_resource type="Gradient" id="Gradient_1ec71"]
 offsets = PackedFloat32Array(0, 0.393443, 0.729508, 1)
