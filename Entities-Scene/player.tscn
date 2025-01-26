@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://bgx151r00tlsu"]
+[gd_scene load_steps=15 format=3 uid="uid://bgx151r00tlsu"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_1ctce"]
 [ext_resource type="Texture2D" uid="uid://dar1cvdy8788a" path="res://Assets/AnimationSheet_Character.png" id="3_vqgv6"]
 [ext_resource type="PackedScene" uid="uid://dwpw7llsxr6jc" path="res://Scenes/viewport.tscn" id="4_doqgl"]
+[ext_resource type="Texture2D" uid="uid://vv57vi1fi33e" path="res://Assets/GUI.png" id="5_2b2t3"]
 [ext_resource type="PackedScene" uid="uid://bcxtkko6rsvew" path="res://Scenes/time_counter.tscn" id="5_5n4tf"]
 [ext_resource type="PackedScene" uid="uid://bpu4ddyhc25ox" path="res://Scenes/Item_and_weapons/Scorching Seal/scorching_seal.tscn" id="5_e22n8"]
 [ext_resource type="Texture2D" uid="uid://dkd4r1euekmh8" path="res://Assets/greenbar (3).png" id="6_1g13r"]
@@ -218,10 +219,23 @@ limit_smoothed = false
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 3
 
+[node name="PAUSE_BUTTON" type="Button" parent="CanvasLayer"]
+offset_left = 1066.0
+offset_top = 55.0
+offset_right = 1086.0
+offset_bottom = 77.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/PAUSE_BUTTON"]
+position = Vector2(10, 11)
+scale = Vector2(2.875, 2.3)
+texture = ExtResource("5_2b2t3")
+region_enabled = true
+region_rect = Rect2(100, 83, 8, 10)
+
 [node name="Time_counter" parent="CanvasLayer" instance=ExtResource("5_5n4tf")]
-offset_left = 1035.0
+offset_left = 945.0
 offset_top = 54.0
-offset_right = -33.0
+offset_right = -123.0
 offset_bottom = -566.0
 
 [node name="Exp" type="ProgressBar" parent="CanvasLayer"]
@@ -244,3 +258,4 @@ texture_progress_offset = Vector2(0, 15)
 tint_under = Color(0.642675, 0.616273, 0.598622, 1)
 
 [connection signal="player_level_up" from="." to="." method="_on_player_level_up"]
+[connection signal="pressed" from="CanvasLayer/PAUSE_BUTTON" to="." method="_on_pause_button_pressed"]

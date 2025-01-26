@@ -10,6 +10,9 @@ func _ready():
 	print("frames per sec:", frames)
 	if player_check:
 		player_check.connect("player_died", _on_game_end)
+	
+	if is_instance_valid(player_check) and player_check.has_signal("game_paused"):
+		player_check.connect("game_paused", _on_game_pause)
 
 func spawner():
 	var enemy_scene = preload("res://Entities-Scene/enemy_temp.tscn").instantiate()
@@ -19,7 +22,7 @@ func spawner():
 		call_deferred("add_child", enemy_scene)
 		bodies += 1
 		#print(bodies)
-	
+		
 	if enemy_scene:
 		enemy_scene.connect("enemy_died", _on_exp_gain)
 	
@@ -30,6 +33,9 @@ func _on_game_end():
 	#print("stopped_spawning")
 	$Path2D/Timer.stop()
 
+func _on_game_pause():
+	print("Paused Successfully")
+	
 func _on_exp_gain(exp_amount):
 	if is_instance_valid(player_check):
 		if player_check.has_method("exprience_gain"):

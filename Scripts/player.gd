@@ -16,6 +16,7 @@ var expr: float = 0.0
 
 signal player_died
 signal player_level_up(increase_amount)
+signal game_paused
 
 func _ready():
 	$CanvasLayer/health.value = health
@@ -77,3 +78,6 @@ func _on_player_level_up():
 	max_exp += (100 * 0.1)
 	emit_signal("player_level_up", increase_amount)
 	#print(max_exp)	
+
+func _on_pause_button_pressed():
+	emit_signal("game_paused")
