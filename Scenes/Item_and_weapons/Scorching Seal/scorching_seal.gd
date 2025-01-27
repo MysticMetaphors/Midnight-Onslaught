@@ -30,6 +30,6 @@ func _on_area_2d_body_exited(body):
 
 func damage_increase(amount):
 	if is_instance_valid(player):
-		damage_amount += (100 * amount)
+		damage_amount += damage_amount * amount
 		print("Leveled ", damage_amount)
 	

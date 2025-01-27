@@ -19,6 +19,8 @@ signal player_level_up(increase_amount)
 signal game_paused
 
 func _ready():
+	$"CanvasLayer/PAUSE-menu".hide()
+	
 	$CanvasLayer/health.value = health
 
 	exprience.value = expr
@@ -75,9 +77,10 @@ func exprience_gain(exp_amount):
 
 func _on_player_level_up():
 	expr = 0
-	max_exp += (100 * 0.1)
+	max_exp += max_exp * 0.1
 	emit_signal("player_level_up", increase_amount)
 	#print(max_exp)	
 
 func _on_pause_button_pressed():
+	$"CanvasLayer/PAUSE-menu".show()
 	emit_signal("game_paused")

@@ -67,6 +67,7 @@ size_flags_horizontal = 4
 
 [node name="RESTART" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "Labek: RESTART
 "
 metadata/_edit_use_anchors_ = true
@@ -102,6 +103,7 @@ vertical_alignment = 1
 
 [node name="MENU" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "Labek: RESTART
 "
 metadata/_edit_use_anchors_ = true

@@ -15,7 +15,9 @@ func _ready():
 		player_check.connect("game_paused", _on_game_pause)
 
 func spawner():
+	var enemy_skeleton = preload("res://Entities-Scene/skeleton.tscn").instantiate()
 	var enemy_scene = preload("res://Entities-Scene/enemy_temp.tscn").instantiate()
+	var enem_arr: Array = [enemy_skeleton, enemy_scene]
 	$Path2D/PathFollow2D.progress_ratio = randf()
 	if is_instance_valid(enemy_scene) and max_bodies >= bodies:
 		enemy_scene.global_position = $Path2D/PathFollow2D.global_position
@@ -34,6 +36,7 @@ func _on_game_end():
 	$Path2D/Timer.stop()
 
 func _on_game_pause():
+	Engine.time_scale = 0
 	print("Paused Successfully")
 	
 func _on_exp_gain(exp_amount):
@@ -50,5 +53,5 @@ func _on_spawn_controller_timeout():
 		$Path2D/Spawn_Controller.stop()
 		#print("last_update: ", $Path2D/Timer.wait_time)
 	else: 
-		$Path2D/Timer.wait_time -= (0.2/100*(100))
+		$Path2D/Timer.wait_time -= 0.2
 		#print("wait_time set to: ", $Path2D/Timer.wait_time)
