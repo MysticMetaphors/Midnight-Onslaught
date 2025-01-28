@@ -1,12 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://bgx151r00tlsu"]
+[gd_scene load_steps=16 format=3 uid="uid://bgx151r00tlsu"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_1ctce"]
 [ext_resource type="Texture2D" uid="uid://dar1cvdy8788a" path="res://Assets/AnimationSheet_Character.png" id="3_vqgv6"]
 [ext_resource type="PackedScene" uid="uid://dwpw7llsxr6jc" path="res://Scenes/viewport.tscn" id="4_doqgl"]
-[ext_resource type="PackedScene" uid="uid://cx67bkadeqp1o" path="res://Scenes/projectile_loader.tscn" id="4_h3xq3"]
 [ext_resource type="Texture2D" uid="uid://vv57vi1fi33e" path="res://Assets/GUI.png" id="5_2b2t3"]
 [ext_resource type="PackedScene" uid="uid://bcxtkko6rsvew" path="res://Scenes/time_counter.tscn" id="5_5n4tf"]
-[ext_resource type="PackedScene" uid="uid://bt7v1o0p7yur5" path="res://Entities-Scene/spinning_sword.tscn" id="5_belnd"]
 [ext_resource type="PackedScene" uid="uid://bpu4ddyhc25ox" path="res://Scenes/Item_and_weapons/Scorching Seal/scorching_seal.tscn" id="5_e22n8"]
 [ext_resource type="Texture2D" uid="uid://dkd4r1euekmh8" path="res://Assets/greenbar (3).png" id="6_1g13r"]
 [ext_resource type="PackedScene" uid="uid://c0o1fhci0qoet" path="res://Scenes/UI/pause_menu.tscn" id="6_x1snv"]
@@ -203,8 +201,6 @@ autoplay = "idle"
 
 [node name="Scorching Seal" parent="." instance=ExtResource("5_e22n8")]
 
-[node name="projectile_launcher" parent="." instance=ExtResource("4_h3xq3")]
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.827252, 0.747598, 0.722267, 1)
 position = Vector2(2.3365e-05, -6)
@@ -212,8 +208,6 @@ scale = Vector2(1.2675, 1.265)
 texture = ExtResource("3_vqgv6")
 hframes = 8
 vframes = 9
-
-[node name="spinning_sword" parent="." instance=ExtResource("5_belnd")]
 
 [node name="viewport" parent="." instance=ExtResource("4_doqgl")]
 position = Vector2(3.67371, 1.99857)

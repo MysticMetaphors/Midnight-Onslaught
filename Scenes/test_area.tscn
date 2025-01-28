@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://dm35y6wcuhk8s"]
+[gd_scene load_steps=9 format=3 uid="uid://dm35y6wcuhk8s"]
 
 [ext_resource type="PackedScene" uid="uid://bgx151r00tlsu" path="res://Entities-Scene/player.tscn" id="1_r0b3k"]
 [ext_resource type="Script" path="res://Scripts/test_dummy.gd" id="2_7ym20"]
+[ext_resource type="Shader" path="res://Scenes/test_shade.gdshader" id="2_dv2j7"]
 [ext_resource type="Texture2D" uid="uid://bx6wssiy3a4dy" path="res://icon.svg" id="3_xmoei"]
 [ext_resource type="PackedScene" uid="uid://cpx32uwbc4l46" path="res://Entities-Scene/enemy_temp.tscn" id="4_6fau8"]
 [ext_resource type="PackedScene" uid="uid://c7bg53ln23nv3" path="res://Entities-Scene/skeleton.tscn" id="5_13vas"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5jnfa"]
+shader = ExtResource("2_dv2j7")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_58iyt"]
 
@@ -13,6 +17,7 @@
 [node name="Player" parent="." instance=ExtResource("1_r0b3k")]
 
 [node name="Test_dummy" type="CharacterBody2D" parent="."]
+material = SubResource("ShaderMaterial_5jnfa")
 position = Vector2(284, 219)
 script = ExtResource("2_7ym20")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c7bg53ln23nv3"]
+[gd_scene load_steps=13 format=3 uid="uid://c7bg53ln23nv3"]
 
 [ext_resource type="Texture2D" uid="uid://b0q4hba6u51ej" path="res://Assets/Entities/Enemies/Skeleton/Skeleton Walk.png" id="1_4dq05"]
 [ext_resource type="Script" path="res://Scripts/skeleton.gd" id="1_dsna6"]
@@ -173,6 +173,9 @@ _data = {
 "move": SubResource("Animation_03kgq")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ib7y8"]
+bg_color = Color(0, 0, 0, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_88ni6"]
 bg_color = Color(0.419608, 0, 0.0784314, 1)
 
@@ -202,6 +205,7 @@ offset_left = -14.0
 offset_top = -14.0
 offset_right = 6.0
 offset_bottom = -10.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ib7y8")
 theme_override_styles/fill = SubResource("StyleBoxFlat_88ni6")
 value = 100.0
 show_percentage = false

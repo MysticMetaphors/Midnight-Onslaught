@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://rcbvqbm6ch3"]
+[gd_scene load_steps=25 format=4 uid="uid://rcbvqbm6ch3"]
 
 [ext_resource type="Script" path="res://Scripts/start.gd" id="1_iblb7"]
 [ext_resource type="Texture2D" uid="uid://vv57vi1fi33e" path="res://Assets/GUI.png" id="1_vsbq1"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dfehhpdi5s3x0" path="res://Scenes/UI/setting.tscn" id="5_mmicr"]
 [ext_resource type="FontFile" uid="uid://dclemsn3p7du4" path="res://Assets/Fonts/Wacky Pixels.ttf" id="7_13uj6"]
 [ext_resource type="PackedScene" uid="uid://de6e1ngwcvrat" path="res://Scenes/UI/transition_scene.tscn" id="9_wci8o"]
+[ext_resource type="AudioStream" uid="uid://bnypi0nce8k53" path="res://Assets/Audio/Goblins_Den_(Regular).wav" id="11_v8kqe"]
+[ext_resource type="PackedScene" uid="uid://bcxtkko6rsvew" path="res://Scenes/time_counter.tscn" id="12_dackc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vidd1"]
 texture = ExtResource("2_5ga5k")
@@ -3439,10 +3441,24 @@ vertical_alignment = 1
 visible = false
 
 [node name="SETTING" parent="." instance=ExtResource("5_mmicr")]
+visible = false
 layout_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_v8kqe")
+volume_db = 16.0
+autoplay = true
+
+[node name="Time_counter" parent="." instance=ExtResource("12_dackc")]
+layout_mode = 1
+offset_left = 817.0
+offset_top = 130.0
+offset_right = 817.0
+offset_bottom = 130.0
 
 [connection signal="pressed" from="VBoxContainer/START" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/SETTING" to="." method="_on_setting_pressed"]
 [connection signal="pressed" from="VBoxContainer/EXIT" to="." method="_on_exit_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
 
 [editable path="TRANSITION_SCENE"]

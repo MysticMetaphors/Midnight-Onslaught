@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfehhpdi5s3x0"]
+[gd_scene load_steps=6 format=3 uid="uid://dfehhpdi5s3x0"]
 
 [ext_resource type="Texture2D" uid="uid://vv57vi1fi33e" path="res://Assets/GUI.png" id="1_e7cor"]
 [ext_resource type="Script" path="res://Scenes/UI/setting.gd" id="1_ptin3"]
+[ext_resource type="FontFile" uid="uid://dclemsn3p7du4" path="res://Assets/Fonts/Wacky Pixels.ttf" id="3_cbxnd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bcil"]
 bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_y25er"]
+font = ExtResource("3_cbxnd")
+font_size = 26
 
 [node name="SETTING" type="Control"]
 layout_mode = 3
@@ -58,4 +63,18 @@ grow_vertical = 2
 texture = ExtResource("1_e7cor")
 region_rect = Rect2(52, 67, 8, 7)
 
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HDR" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "HDR"
+label_settings = SubResource("LabelSettings_y25er")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
 [connection signal="pressed" from="HBoxContainer/PanelContainer/VBoxContainer/EXIT" to="." method="_on_exit_pressed"]
+[connection signal="toggled" from="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]

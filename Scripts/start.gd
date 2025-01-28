@@ -13,3 +13,7 @@ func _on_setting_pressed():
 
 func _on_exit_pressed():
 	get_tree().quit()
+
+
+func _on_audio_stream_player_finished():
+	$AudioStreamPlayer.play()

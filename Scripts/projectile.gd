@@ -1,8 +1,18 @@
 extends Area2D
 
-var damage = 20
+var attack_power = 20
 var enemy_hit = false
 var distance = 0
+
+@onready var player = get_parent()
+
+func _ready():
+	player.connect("player_level_up", damage_increase)
+
+func damage_increase(amount):
+	if is_instance_valid(player):
+		attack_power += attack_power * amount
+		#print("Leveled ", attack_power)
 
 func _physics_process(delta):
 	var dir = Vector2.RIGHT.rotated(rotation)
@@ -18,11 +28,6 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	if body.has_method("enemy_take_damage"):
-		body.enemy_take_damage(damage)
+		body.enemy_take_damage(attack_power)
 		call_deferred("queue_free")
-	#if body_entered:
-		#enemy_hit = true
-		#$CollisionShape2D.disabled = true
-		#explosion_instance.explo_pos = Vector2.ZERO
-		#$CollisionShape2D.add_child(explosion_instance)
 	
