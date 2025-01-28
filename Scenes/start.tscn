@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dwpw7llsxr6jc" path="res://Scenes/viewport.tscn" id="3_kqiy7"]
 [ext_resource type="Texture2D" uid="uid://b8nxxrsgow2h6" path="res://Assets/Torch/torch_1.png" id="4_iqmto"]
 [ext_resource type="Shader" path="res://Assets/Fog.gdshader" id="5_gfbji"]
-[ext_resource type="FontFile" uid="uid://dclemsn3p7du4" path="res://Assets/Wacky Pixels.ttf" id="7_13uj6"]
+[ext_resource type="FontFile" uid="uid://dclemsn3p7du4" path="res://Assets/Fonts/Wacky Pixels.ttf" id="7_13uj6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8firc"]
 texture = ExtResource("2_5ga5k")

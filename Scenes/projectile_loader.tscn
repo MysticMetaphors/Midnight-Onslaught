@@ -6,7 +6,6 @@
 radius = 274.046
 
 [node name="projectile_launcher" type="Node2D"]
-position = Vector2(130, 73)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0

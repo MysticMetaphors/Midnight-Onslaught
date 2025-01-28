@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bcxtkko6rsvew"]
 
 [ext_resource type="Script" path="res://Scripts/Time_counter.gd" id="1_b5pwg"]
-[ext_resource type="FontFile" uid="uid://dclemsn3p7du4" path="res://Assets/Wacky Pixels.ttf" id="2_lg61f"]
+[ext_resource type="FontFile" uid="uid://dclemsn3p7du4" path="res://Assets/Fonts/Wacky Pixels.ttf" id="2_lg61f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mx1mo"]
 font = ExtResource("2_lg61f")

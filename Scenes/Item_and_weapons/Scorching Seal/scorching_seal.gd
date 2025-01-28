@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var damage_amount = 10.0
+@export var damage_amount = 20.0
 @export var damage_interval = 1.0 
 @export var damage_timer = 0.0 
 

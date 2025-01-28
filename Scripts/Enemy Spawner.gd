@@ -19,15 +19,26 @@ func spawner():
 	var enemy_scene = preload("res://Entities-Scene/enemy_temp.tscn").instantiate()
 	var enem_arr: Array = [enemy_skeleton, enemy_scene]
 	$Path2D/PathFollow2D.progress_ratio = randf()
-	if is_instance_valid(enemy_scene) and max_bodies >= bodies:
-		enemy_scene.global_position = $Path2D/PathFollow2D.global_position
-		call_deferred("add_child", enemy_scene)
+	
+	var selecting_Object = randi() % enem_arr.size()
+	var selected_object = enem_arr[selecting_Object]
+	if is_instance_valid(selected_object):
+		print(selected_object)
+		selected_object.global_position = $Path2D/PathFollow2D.global_position
+		call_deferred("add_child", selected_object)
 		bodies += 1
+	#is_instance_valid(enem_arr) and
+	#if  is_instance_valid(enem_arr.size()-randi_range(0, 1)) and max_bodies >= bodies:
+		#enem_arr.shuffle()
+		#print(enem_arr)
+		#enem_arr[0].global_position = $Path2D/PathFollow2D.global_position
+		#call_deferred("add_child", enemy_scene)
+		#bodies += 1
 		#print(bodies)
 		
 	if enemy_scene:
 		enemy_scene.connect("enemy_died", _on_exp_gain)
-	
+
 func _on_timer_timeout():
 	spawner()
 
