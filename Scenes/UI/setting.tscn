@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfehhpdi5s3x0"]
+
+[ext_resource type="Texture2D" uid="uid://vv57vi1fi33e" path="res://Assets/GUI.png" id="1_e7cor"]
+[ext_resource type="Script" path="res://Scenes/UI/setting.gd" id="1_ptin3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bcil"]
+bg_color = Color(1, 1, 1, 0)
+
+[node name="SETTING" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ptin3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 350)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_6bcil")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("1_e7cor")
+region_rect = Rect2(2, 34, 44, 44)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(220, 250)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="EXIT" type="Button" parent="HBoxContainer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_type_variation = &"FlatButton"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/PanelContainer/VBoxContainer/EXIT"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_e7cor")
+region_rect = Rect2(52, 67, 8, 7)
+
+[connection signal="pressed" from="HBoxContainer/PanelContainer/VBoxContainer/EXIT" to="." method="_on_exit_pressed"]

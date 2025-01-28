@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://rcbvqbm6ch3"]
+[gd_scene load_steps=23 format=4 uid="uid://rcbvqbm6ch3"]
 
 [ext_resource type="Script" path="res://Scripts/start.gd" id="1_iblb7"]
 [ext_resource type="Texture2D" uid="uid://vv57vi1fi33e" path="res://Assets/GUI.png" id="1_vsbq1"]
@@ -7,10 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://dwpw7llsxr6jc" path="res://Scenes/viewport.tscn" id="3_kqiy7"]
 [ext_resource type="Texture2D" uid="uid://b8nxxrsgow2h6" path="res://Assets/Torch/torch_1.png" id="4_iqmto"]
 [ext_resource type="Shader" path="res://Assets/Fog.gdshader" id="5_gfbji"]
+[ext_resource type="PackedScene" uid="uid://dfehhpdi5s3x0" path="res://Scenes/UI/setting.tscn" id="5_mmicr"]
 [ext_resource type="FontFile" uid="uid://dclemsn3p7du4" path="res://Assets/Fonts/Wacky Pixels.ttf" id="7_13uj6"]
 [ext_resource type="PackedScene" uid="uid://de6e1ngwcvrat" path="res://Scenes/UI/transition_scene.tscn" id="9_wci8o"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8firc"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vidd1"]
 texture = ExtResource("2_5ga5k")
 40:0/0 = 0
 41:0/0 = 0
@@ -1038,9 +1039,9 @@ texture = ExtResource("2_5ga5k")
 14:33/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_5ta76"]
-sources/0 = SubResource("TileSetAtlasSource_8firc")
+sources/0 = SubResource("TileSetAtlasSource_vidd1")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hv2hs"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fa3xh"]
 texture = ExtResource("2_5ga5k")
 40:0/0 = 0
 41:0/0 = 0
@@ -2068,9 +2069,9 @@ texture = ExtResource("2_5ga5k")
 14:33/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_q1po1"]
-sources/0 = SubResource("TileSetAtlasSource_hv2hs")
+sources/0 = SubResource("TileSetAtlasSource_fa3xh")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p48ls"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oqltp"]
 texture = ExtResource("3_axdch")
 0:1/0 = 0
 1:1/0 = 0
@@ -2196,7 +2197,7 @@ texture = ExtResource("3_axdch")
 1:15/0 = 0
 2:15/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_op3ve"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d8jy4"]
 texture = ExtResource("2_5ga5k")
 40:0/0 = 0
 41:0/0 = 0
@@ -3224,8 +3225,8 @@ texture = ExtResource("2_5ga5k")
 14:33/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_745jh"]
-sources/0 = SubResource("TileSetAtlasSource_p48ls")
-sources/1 = SubResource("TileSetAtlasSource_op3ve")
+sources/0 = SubResource("TileSetAtlasSource_oqltp")
+sources/1 = SubResource("TileSetAtlasSource_d8jy4")
 
 [sub_resource type="Gradient" id="Gradient_yx731"]
 offsets = PackedFloat32Array(0, 0.713115, 1)
@@ -3235,7 +3236,7 @@ colors = PackedColorArray(0, 0, 0, 1, 0.532787, 0.532787, 0.532787, 1, 0.856067,
 noise_type = 5
 seed = 1
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ruu2w"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uacp6"]
 invert = true
 seamless = true
 color_ramp = SubResource("Gradient_yx731")
@@ -3245,7 +3246,7 @@ noise = SubResource("FastNoiseLite_iu62e")
 shader = ExtResource("5_gfbji")
 shader_parameter/density = 0.25
 shader_parameter/speed = Vector2(0.02, 0.01)
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_ruu2w")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_uacp6")
 
 [sub_resource type="LabelSettings" id="LabelSettings_ybwys"]
 line_spacing = 0.0
@@ -3433,6 +3434,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TRANSITION_SCENE" parent="." instance=ExtResource("9_wci8o")]
+
+[node name="CanvasLayer" parent="TRANSITION_SCENE" index="0"]
+visible = false
+
+[node name="SETTING" parent="." instance=ExtResource("5_mmicr")]
+layout_mode = 1
 
 [connection signal="pressed" from="VBoxContainer/START" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/SETTING" to="." method="_on_setting_pressed"]
