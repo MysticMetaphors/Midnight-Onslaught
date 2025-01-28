@@ -11,6 +11,7 @@ var viewport_instance = preload("res://Scenes/viewport.tscn").instantiate()
 var game_over_tcsn = preload("res://Scenes/game_over.tscn").instantiate()
 var increase_amount = 0.1
 #var max_health
+
 var max_exp: float = 100.0
 var expr: float = 0.0
 
@@ -75,7 +76,6 @@ func _on_player_level_up(exp_amount):
 	exprience.value = expr
 	#print(max_exp)
 	#print($Exp.max_value)
-
 
 func _on_pause_button_pressed():
 	$"CanvasLayer/PAUSE-menu".show()

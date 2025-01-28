@@ -24,10 +24,10 @@ func spawner():
 	
 	$Path2D/PathFollow2D.progress_ratio = randf()
 	if is_instance_valid(selected_object):
-		print(selected_object)
 		selected_object.global_position = $Path2D/PathFollow2D.global_position
 		call_deferred("add_child", selected_object)
 		bodies += 1
+		#print(selected_object)
 		
 	if selected_object:
 		selected_object.connect("enemy_died", _on_exp_gain)
@@ -41,7 +41,7 @@ func _on_game_end():
 
 func _on_game_pause():
 	Engine.time_scale = 0
-	print("Paused Successfully")
+	#print("Paused Successfully")
 	
 func _on_exp_gain(exp_amount):
 	if is_instance_valid(player_check):
