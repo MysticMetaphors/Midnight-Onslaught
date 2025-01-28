@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var attack_power = 20.0
+@export var attack_power = 15.0
 @export var rotation_speed = 5.0
 
 func _physics_process(delta): 

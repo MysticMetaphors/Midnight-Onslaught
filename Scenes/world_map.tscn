@@ -2909,7 +2909,7 @@ rotation = -0.00743145
 autostart = true
 
 [node name="Spawn_Controller" type="Timer" parent="Path2D"]
-wait_time = 30.0
+wait_time = 120.0
 autostart = true
 
 [connection signal="timeout" from="Path2D/Timer" to="." method="_on_timer_timeout"]

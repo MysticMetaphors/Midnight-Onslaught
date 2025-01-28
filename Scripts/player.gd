@@ -66,20 +66,16 @@ func player_take_damage(amount):
 		get_parent().add_child(game_over_tcsn)
 		queue_free()
 
-func exprience_gain(exp_amount):
+func _on_player_level_up(exp_amount):
 	expr += exp_amount
 	if expr >= max_exp:
-		_on_player_level_up()
-		#print(max_exp)
-		#print($Exp.max_value)
+		expr = 0
+		max_exp += max_exp * 0.1
+		emit_signal("player_level_up", increase_amount)
 	exprience.value = expr
-	#print($Exp.value)
+	#print(max_exp)
+	#print($Exp.max_value)
 
-func _on_player_level_up():
-	expr = 0
-	max_exp += max_exp * 0.1
-	emit_signal("player_level_up", increase_amount)
-	#print(max_exp)	
 
 func _on_pause_button_pressed():
 	$"CanvasLayer/PAUSE-menu".show()

@@ -42,14 +42,14 @@ func die():
 	var death = preload("res://Scenes/death_scene.tscn").instantiate()
 	death.global_position = $".".global_position
 	get_parent().add_child(death)
-	emit_signal("enemy_died", exp_amount)
 	opt_death()
+	emit_signal("enemy_died", exp_amount)
 
 func opt_death():
-	$".".hide()
 	$Hitbox.disabled = true
 	$Attack/CollisionShape2D.disabled = true
-
+	$".".hide()
+	
 func _on_attack_body_entered(body):
 	if body.has_method("player_take_damage") and can_attack:
 		anim.play("attack")

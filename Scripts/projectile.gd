@@ -18,7 +18,7 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	if body.has_method("enemy_take_damage"):
-		body.enemy_take_damage(50)
+		body.enemy_take_damage(damage)
 		call_deferred("queue_free")
 	#if body_entered:
 		#enemy_hit = true
