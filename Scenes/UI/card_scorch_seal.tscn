@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0djkih7cirgy"]
+
+[ext_resource type="PackedScene" uid="uid://gqbpkcem30w" path="res://Scenes/UI/card.tscn" id="1_fjrf2"]
+
+[sub_resource type="Gradient" id="Gradient_f0v32"]
+offsets = PackedFloat32Array(0, 0.393443, 0.729508, 1)
+colors = PackedColorArray(1, 0.341176, 0.00392157, 1, 0.996078, 0.494118, 0.00392157, 1, 0.996078, 0.654902, 0.00392157, 1, 0.996078, 0.807843, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_401cf"]
+gradient = SubResource("Gradient_f0v32")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y2jay"]
+emission_shape_scale = Vector3(1.5, 1, 1)
+emission_shape = 2
+emission_sphere_radius = 54.22
+gravity = Vector3(0, -5, 0)
+color_ramp = SubResource("GradientTexture1D_401cf")
+
+[node name="card-Scorch-seal" instance=ExtResource("1_fjrf2")]
+
+[node name="Card" parent="." index="0"]
+layout_mode = 0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Card/VBoxContainer" index="0"]
+position = Vector2(110, 103)
+amount = 1548
+process_material = SubResource("ParticleProcessMaterial_y2jay")
+speed_scale = 13.29
+explosiveness = 0.19
+trail_enabled = true
+trail_lifetime = 0.5
+
+[node name="NinePatchRect" parent="Card/VBoxContainer" index="1"]
+visible = false
+
+[node name="RichTextLabel" parent="Card" index="1"]
+text = "Scorch Seal that burn enemies on it's feild per tick, dealing 15 (+ player_damage) damage each time."

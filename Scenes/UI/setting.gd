@@ -8,7 +8,6 @@ func _ready():
 func _on_exit_pressed():
 	self.hide()
 
-
 func _on_check_button_toggled(toggled_on):
 	if toggled_on:
 		proj_set_hdr = true

@@ -59,6 +59,5 @@ func _on_spawn_controller_timeout():
 		$Path2D/Timer.wait_time -= 0.2
 		#print("wait_time set to: ", $Path2D/Timer.wait_time)
 
-
 func _on_audio_stream_player_finished():
 	$AudioStreamPlayer.play()

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://sm75rqscwjak"]
+
+[ext_resource type="PackedScene" uid="uid://gqbpkcem30w" path="res://Scenes/UI/card.tscn" id="1_gbj3b"]
+
+[node name="card-cutlass" instance=ExtResource("1_gbj3b")]
+
+[node name="Card" parent="." index="0"]
+layout_mode = 0

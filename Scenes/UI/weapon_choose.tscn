@@ -1,0 +1,237 @@
+[gd_scene load_steps=13 format=3 uid="uid://yhw05p0s52ic"]
+
+[ext_resource type="FontFile" uid="uid://dclemsn3p7du4" path="res://Assets/Fonts/Wacky Pixels.ttf" id="1_4wnhr"]
+[ext_resource type="Texture2D" uid="uid://bd44vdj05l6u4" path="res://Assets/Exotic Swords.png" id="2_k6oar"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_01jth"]
+font = ExtResource("1_4wnhr")
+font_size = 76
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_a1u57"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_su8tw"]
+offsets = PackedFloat32Array(0, 0.663934, 1)
+colors = PackedColorArray(0.797587, 0.392911, 0, 1, 0.889109, 0.297098, 0, 1, 0.184306, 0.0249159, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2sbyy"]
+gradient = SubResource("Gradient_su8tw")
+
+[sub_resource type="Curve" id="Curve_3ffv0"]
+_data = [Vector2(0.0942029, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.593407), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rylja"]
+curve = SubResource("Curve_3ffv0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qlajv"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 31.71
+angle_min = -109.5
+radial_velocity_max = 64.31
+gravity = Vector3(0, -1200, 0)
+linear_accel_min = -56.6
+linear_accel_max = -56.6
+radial_accel_min = 24.1
+radial_accel_max = 26.51
+tangential_accel_min = -10.68
+tangential_accel_max = 23.06
+scale_min = 0.0
+scale_max = 45.45
+scale_curve = SubResource("CurveTexture_rylja")
+color = Color(0.600427, 0.665042, 0.30835, 1)
+color_ramp = SubResource("GradientTexture1D_2sbyy")
+
+[sub_resource type="Gradient" id="Gradient_f0v32"]
+offsets = PackedFloat32Array(0, 0.393443, 0.729508, 1)
+colors = PackedColorArray(1, 0.341176, 0.00392157, 1, 0.996078, 0.494118, 0.00392157, 1, 0.996078, 0.654902, 0.00392157, 1, 0.996078, 0.807843, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_401cf"]
+gradient = SubResource("Gradient_f0v32")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y2jay"]
+emission_shape_scale = Vector3(1.5, 1, 1)
+emission_shape = 2
+emission_sphere_radius = 54.22
+gravity = Vector3(0, -5, 0)
+color_ramp = SubResource("GradientTexture1D_401cf")
+
+[node name="WEAPON CHOOSE" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 148.23)
+layout_mode = 2
+text = "CHOOSE A NEW WEAPON"
+label_settings = SubResource("LabelSettings_01jth")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Card-FireBall" type="Control" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Card" type="Button" parent="VBoxContainer/HBoxContainer/Card-FireBall"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = 157.0
+offset_right = 425.0
+offset_bottom = 345.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/Card-FireBall/Card"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 23.0
+offset_top = 22.0
+offset_right = -19.0
+offset_bottom = 229.0
+grow_horizontal = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="VBoxContainer/HBoxContainer/Card-FireBall/Card/VBoxContainer"]
+material = SubResource("CanvasItemMaterial_a1u57")
+position = Vector2(108, 107)
+amount = 250
+process_material = SubResource("ParticleProcessMaterial_qlajv")
+lifetime = 0.3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/Card-FireBall/Card/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_k6oar")
+region_rect = Rect2(18, 16, 12, 16)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/Card-FireBall/Card"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -105.0
+offset_right = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("1_4wnhr")
+theme_override_font_sizes/normal_font_size = 17
+bbcode_enabled = true
+text = "A Blazing Fireball that shoot at the enemy dealing 20 (+ player_damage) damage each contact"
+fit_content = true
+
+[node name="card-cutlass" type="Control" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Card" type="Button" parent="VBoxContainer/HBoxContainer/card-cutlass"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = 64.0
+offset_right = 332.0
+offset_bottom = 345.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/card-cutlass/Card"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 23.0
+offset_top = 22.0
+offset_right = -19.0
+offset_bottom = 229.0
+grow_horizontal = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/card-cutlass/Card/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_k6oar")
+region_rect = Rect2(18, 16, 12, 16)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/card-cutlass/Card"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -105.0
+offset_right = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("1_4wnhr")
+theme_override_font_sizes/normal_font_size = 17
+bbcode_enabled = true
+text = "A ring of ghostly pirate cutlasses swirls around the player, slashing nearby foes with ruthless precision. Each blade deals 20 damage, embodying the wrath of a long-lost crew."
+fit_content = true
+
+[node name="card-Scorch-seal" type="Control" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Card" type="Button" parent="VBoxContainer/HBoxContainer/card-Scorch-seal"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = -28.0
+offset_right = 240.0
+offset_bottom = 345.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/card-Scorch-seal/Card"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 23.0
+offset_top = 22.0
+offset_right = -19.0
+offset_bottom = 229.0
+grow_horizontal = 2
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="VBoxContainer/HBoxContainer/card-Scorch-seal/Card/VBoxContainer"]
+position = Vector2(110, 103)
+amount = 1548
+process_material = SubResource("ParticleProcessMaterial_y2jay")
+speed_scale = 13.29
+explosiveness = 0.19
+trail_enabled = true
+trail_lifetime = 0.5
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/HBoxContainer/card-Scorch-seal/Card/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_k6oar")
+region_rect = Rect2(18, 16, 12, 16)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/card-Scorch-seal/Card"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -105.0
+offset_right = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("1_4wnhr")
+theme_override_font_sizes/normal_font_size = 17
+bbcode_enabled = true
+text = "Scorch Seal that burn enemies on it's feild per tick, dealing 15 (+ player_damage) damage each time."
+fit_content = true

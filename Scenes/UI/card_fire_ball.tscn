@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1l76xlsksgj2"]
+
+[ext_resource type="PackedScene" uid="uid://gqbpkcem30w" path="res://Scenes/UI/card.tscn" id="1_nambr"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_a1u57"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_su8tw"]
+offsets = PackedFloat32Array(0, 0.663934, 1)
+colors = PackedColorArray(0.797587, 0.392911, 0, 1, 0.889109, 0.297098, 0, 1, 0.184306, 0.0249159, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2sbyy"]
+gradient = SubResource("Gradient_su8tw")
+
+[sub_resource type="Curve" id="Curve_3ffv0"]
+_data = [Vector2(0.0942029, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.593407), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rylja"]
+curve = SubResource("Curve_3ffv0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qlajv"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 31.71
+angle_min = -109.5
+radial_velocity_max = 64.31
+gravity = Vector3(0, -1200, 0)
+linear_accel_min = -56.6
+linear_accel_max = -56.6
+radial_accel_min = 24.1
+radial_accel_max = 26.51
+tangential_accel_min = -10.68
+tangential_accel_max = 23.06
+scale_min = 0.0
+scale_max = 45.45
+scale_curve = SubResource("CurveTexture_rylja")
+color = Color(0.600427, 0.665042, 0.30835, 1)
+color_ramp = SubResource("GradientTexture1D_2sbyy")
+
+[node name="Card-FireBall" instance=ExtResource("1_nambr")]
+
+[node name="Card" parent="." index="0"]
+layout_mode = 0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Card/VBoxContainer" index="0"]
+material = SubResource("CanvasItemMaterial_a1u57")
+position = Vector2(108, 107)
+amount = 250
+process_material = SubResource("ParticleProcessMaterial_qlajv")
+lifetime = 0.3
+
+[node name="NinePatchRect" parent="Card/VBoxContainer" index="1"]
+visible = false
+
+[node name="RichTextLabel" parent="Card" index="1"]
+text = "A Blazing Fireball that shoot at the enemy dealing 20 (+ player_damage) damage each contact"

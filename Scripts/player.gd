@@ -14,13 +14,25 @@ var increase_amount = 0.1
 
 var max_exp: float = 100.0
 var expr: float = 0.0
+var level: int = 1
+
+var choosen_weapon_amount: int = 0
 
 signal player_died
 signal player_level_up(increase_amount)
 signal game_paused
 
 func _ready():
+	var nodes_in_group = get_tree().get_nodes_in_group("Particle")
+	for node in nodes_in_group:
+		if node.name == "GPUParticles2D":
+			nodes_in_group.PROCESS_MODE_ALWAYS
+			print("found")
+		else:
+			print("404")
+
 	$"CanvasLayer/PAUSE-menu".hide()
+	Engine.time_scale = 0
 	
 	$CanvasLayer/health.value = health
 
@@ -71,12 +83,45 @@ func _on_player_level_up(exp_amount):
 	expr += exp_amount
 	if expr >= max_exp:
 		expr = 0
+		level += 1
 		max_exp += max_exp * 0.1
 		emit_signal("player_level_up", increase_amount)
 	exprience.value = expr
+	
+	if choosen_weapon_amount != 3:
+		if level % 10 == 0:
+			$"CanvasLayer/WEAPON CHOOSE".show()
+			Engine.time_scale = 0
 	#print(max_exp)
 	#print($Exp.max_value)
+	print(level)
 
 func _on_pause_button_pressed():
 	$"CanvasLayer/PAUSE-menu".show()
+	Engine.time_scale = 0
 	emit_signal("game_paused")
+	
+func hide_canvas_choose():
+	$"CanvasLayer/WEAPON CHOOSE".hide()
+	choosen_weapon_amount += 1
+
+func _on_cardfireball_pressed():
+	var fireball = preload("res://Scenes/projectile_loader.tscn").instantiate()
+	$CanvasGroup.add_child(fireball)
+	$"CanvasLayer/WEAPON CHOOSE/VBoxContainer/HBoxContainer/Card-FireBall/Card-fireball".disabled = true
+	Engine.time_scale = 1
+	hide_canvas_choose()
+
+func _on_cardcutlass_pressed():
+	var cutlass = preload("res://Entities-Scene/spinning_sword.tscn").instantiate()
+	$CanvasGroup.add_child(cutlass)
+	$"CanvasLayer/WEAPON CHOOSE/VBoxContainer/HBoxContainer/card-cutlass/Card-cutlass".disabled = true
+	Engine.time_scale = 1
+	hide_canvas_choose()
+
+func _on_cardscorch_seal_pressed():
+	var scorch_seal = preload("res://Scenes/Item_and_weapons/Scorching Seal/scorching_seal.tscn").instantiate()
+	$CanvasGroup.add_child(scorch_seal)
+	$"CanvasLayer/WEAPON CHOOSE/VBoxContainer/HBoxContainer/card-Scorch-seal/Card-scorchSeal".disabled = true
+	Engine.time_scale = 1
+	hide_canvas_choose()

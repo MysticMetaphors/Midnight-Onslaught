@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://gqbpkcem30w"]
+
+[ext_resource type="Texture2D" uid="uid://bd44vdj05l6u4" path="res://Assets/Exotic Swords.png" id="1_bfwsd"]
+[ext_resource type="FontFile" uid="uid://dclemsn3p7du4" path="res://Assets/Fonts/Wacky Pixels.ttf" id="2_4sj47"]
+
+[node name="card-temp" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Card" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 268.0
+offset_bottom = 345.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Card"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 23.0
+offset_top = 22.0
+offset_right = -19.0
+offset_bottom = 229.0
+grow_horizontal = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Card/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_bfwsd")
+region_rect = Rect2(18, 16, 12, 16)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Card"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -105.0
+offset_right = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("2_4sj47")
+theme_override_font_sizes/normal_font_size = 17
+bbcode_enabled = true
+text = "A ring of ghostly pirate cutlasses swirls around the player, slashing nearby foes with ruthless precision. Each blade deals 20 damage, embodying the wrath of a long-lost crew."
+fit_content = true
