@@ -48,6 +48,8 @@ func die():
 func opt_death():
 	$Hitbox.disabled = true
 	$Attack/CollisionShape2D.disabled = true
+	self.set_process(false)
+	self.set_physics_process(false)
 	$".".hide()
 	
 func _on_attack_body_entered(body):

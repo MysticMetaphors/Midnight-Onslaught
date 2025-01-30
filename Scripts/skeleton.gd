@@ -48,6 +48,8 @@ func die():
 func opt_death():
 	$CollisionShape2D.disabled = true
 	$Area2D/CollisionShape2D.disabled = true
+	self.set_process(false)
+	self.set_physics_process(false)
 	$".".hide()
 
 func _on_area_2d_body_entered(body):

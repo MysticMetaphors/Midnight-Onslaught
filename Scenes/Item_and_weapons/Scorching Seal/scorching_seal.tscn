@@ -20,7 +20,7 @@ color_ramp = SubResource("GradientTexture1D_401cf")
 radius = 51.9875
 height = 160.056
 
-[node name="Scorching Seal" type="Node2D"]
+[node name="Scorching Seal" type="Node2D" groups=["allow_pause"]]
 script = ExtResource("1_kkeo8")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]

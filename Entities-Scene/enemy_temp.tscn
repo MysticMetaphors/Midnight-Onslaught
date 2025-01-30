@@ -188,7 +188,7 @@ bg_color = Color(0.419545, 0, 0.0782815, 1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_rwyr4"]
 radius = 12.0416
 
-[node name="enemy_temp" type="CharacterBody2D" groups=["enemy"]]
+[node name="enemy_temp" type="CharacterBody2D" groups=["allow_pause", "enemy"]]
 collision_layer = 18
 collision_mask = 2
 motion_mode = 1

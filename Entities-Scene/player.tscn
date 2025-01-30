@@ -1,12 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://bgx151r00tlsu"]
+[gd_scene load_steps=25 format=3 uid="uid://bgx151r00tlsu"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_1ctce"]
 [ext_resource type="Texture2D" uid="uid://dar1cvdy8788a" path="res://Assets/AnimationSheet_Character.png" id="3_vqgv6"]
 [ext_resource type="PackedScene" uid="uid://dwpw7llsxr6jc" path="res://Scenes/viewport.tscn" id="4_doqgl"]
-[ext_resource type="Texture2D" uid="uid://vv57vi1fi33e" path="res://Assets/GUI.png" id="5_2b2t3"]
 [ext_resource type="PackedScene" uid="uid://bcxtkko6rsvew" path="res://Scenes/time_counter.tscn" id="5_5n4tf"]
 [ext_resource type="Texture2D" uid="uid://dkd4r1euekmh8" path="res://Assets/greenbar (3).png" id="6_1g13r"]
-[ext_resource type="PackedScene" uid="uid://c0o1fhci0qoet" path="res://Scenes/UI/pause_menu.tscn" id="6_x1snv"]
 [ext_resource type="Texture2D" uid="uid://clq8h57vnjj6y" path="res://Assets/greenbar (2).png" id="7_ojxvp"]
 [ext_resource type="FontFile" uid="uid://dclemsn3p7du4" path="res://Assets/Fonts/Wacky Pixels.ttf" id="10_5u8br"]
 [ext_resource type="Texture2D" uid="uid://bd44vdj05l6u4" path="res://Assets/Exotic Swords.png" id="11_fqdqk"]
@@ -236,7 +234,7 @@ emission_sphere_radius = 54.22
 gravity = Vector3(0, -5, 0)
 color_ramp = SubResource("GradientTexture1D_401cf")
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" groups=["Player", "allow_pause"]]
 position = Vector2(575, 322)
 collision_mask = 13
 script = ExtResource("1_1ctce")
@@ -300,24 +298,6 @@ texture_progress = ExtResource("7_ojxvp")
 texture_progress_offset = Vector2(0, 15)
 tint_under = Color(0.642675, 0.616273, 0.598622, 1)
 
-[node name="PAUSE_BUTTON" type="Button" parent="CanvasLayer"]
-offset_left = 1066.0
-offset_top = 55.0
-offset_right = 1086.0
-offset_bottom = 77.0
-
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/PAUSE_BUTTON"]
-position = Vector2(10, 11)
-scale = Vector2(2.875, 2.3)
-texture = ExtResource("5_2b2t3")
-region_enabled = true
-region_rect = Rect2(100, 83, 8, 10)
-
-[node name="PAUSE-menu" parent="CanvasLayer" instance=ExtResource("6_x1snv")]
-visible = false
-offset_top = -1.0
-offset_bottom = -1.0
-
 [node name="WEAPON CHOOSE" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
@@ -325,6 +305,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/WEAPON CHOOSE"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -229.0
+offset_top = -490.0
+offset_right = -229.0
+offset_bottom = -490.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.38058, 2.33693)
+color = Color(0, 0, 0, 0.752941)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/WEAPON CHOOSE"]
 layout_mode = 1
@@ -341,6 +335,7 @@ layout_mode = 2
 text = "CHOOSE A NEW WEAPON"
 label_settings = SubResource("LabelSettings_01jth")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/WEAPON CHOOSE/VBoxContainer"]
 layout_mode = 2
@@ -498,7 +493,6 @@ text = "Scorch Seal that burn enemies on it's feild per tick, dealing 15 (+ play
 fit_content = true
 
 [connection signal="player_level_up" from="." to="." method="_on_player_level_up"]
-[connection signal="pressed" from="CanvasLayer/PAUSE_BUTTON" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/WEAPON CHOOSE/VBoxContainer/HBoxContainer/Card-FireBall/Card-fireball" to="." method="_on_cardfireball_pressed"]
 [connection signal="pressed" from="CanvasLayer/WEAPON CHOOSE/VBoxContainer/HBoxContainer/card-cutlass/Card-cutlass" to="." method="_on_cardcutlass_pressed"]
 [connection signal="pressed" from="CanvasLayer/WEAPON CHOOSE/VBoxContainer/HBoxContainer/card-Scorch-seal/Card-scorchSeal" to="." method="_on_cardscorch_seal_pressed"]

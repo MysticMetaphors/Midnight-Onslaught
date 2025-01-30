@@ -1,18 +1,18 @@
 extends Node2D
 
 @onready var player_check = $Player
+@onready var pause_menu = $"UI/PAUSE-menu"
 
 var bodies = 0
 var max_bodies = 40
 
 func _ready():
-	var frames = Engine.get_frames_per_second()
-	print("frames per sec:", frames)
-	if player_check:
-		player_check.connect("player_died", _on_game_end)
+	_on_game_pause(true)
+	pause_menu.connect("continue_game", _on_game_pause)
 	
 	if is_instance_valid(player_check) and player_check.has_signal("game_paused"):
 		player_check.connect("game_paused", _on_game_pause)
+		player_check.connect("player_died", _on_game_end)
 
 func spawner():
 	var enemy_skeleton = preload("res://Entities-Scene/skeleton.tscn").instantiate()
@@ -39,10 +39,26 @@ func _on_game_end():
 	#print("stopped_spawning")
 	$Path2D/Timer.stop()
 
-func _on_game_pause():
-	Engine.time_scale = 0
-	#print("Paused Successfully")
+func _on_game_pause(pause: bool):
+	var objects_pause = get_tree().get_nodes_in_group("allow_pause")
 	
+	for each in objects_pause:
+		each.set_process(!pause)
+		each.set_physics_process(!pause)
+		each.set_process_input(!pause)  # Stops input handling  
+		 # Pause Animations
+		if each.has_node("AnimationPlayer"):
+			var anim = each.get_node("AnimationPlayer")
+			if pause:
+				anim.stop()
+			else:
+				anim.play()
+		# Pause Timers
+		for timer in each.get_children():
+			if timer is Timer:
+				timer.paused = pause
+	#print("Paused Successfully")
+
 func _on_exp_gain(exp_amount):
 	if is_instance_valid(player_check):
 		player_check._on_player_level_up(exp_amount)
@@ -61,3 +77,7 @@ func _on_spawn_controller_timeout():
 
 func _on_audio_stream_player_finished():
 	$AudioStreamPlayer.play()
+
+func _on_pause_button_pressed():
+	_on_game_pause(true)
+	$"UI/PAUSE-menu".show()

@@ -2,7 +2,6 @@ extends Area2D
 
 var shooting = true
 
-
 func _physics_process(_delta):
 	var enemy_target = get_overlapping_bodies()
 	if enemy_target.size() > 0:

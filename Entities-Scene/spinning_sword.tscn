@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gwvpm"]
 size = Vector2(20, 50)
 
-[node name="spinning_sword" type="Node2D"]
+[node name="spinning_sword" type="Node2D" groups=["allow_pause"]]
 script = ExtResource("1_30bqc")
 rotation_speed = 7.0
 

@@ -7,7 +7,7 @@
 font = ExtResource("2_lg61f")
 font_size = 40
 
-[node name="Time_counter" type="Control"]
+[node name="Time_counter" type="Control" groups=["allow_pause"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,7 +27,7 @@ offset_bottom = 48.0
 text = "00:00"
 label_settings = SubResource("LabelSettings_mx1mo")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." groups=["allow_pause"]]
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
