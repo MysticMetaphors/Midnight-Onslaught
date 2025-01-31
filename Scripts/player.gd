@@ -72,15 +72,16 @@ func _on_player_level_up(exp_amount):
 	expr += exp_amount
 	if expr >= max_exp:
 		expr = 0
-		level += 1
 		max_exp += max_exp * 0.1
+		level_counter()
 		emit_signal("player_level_up", increase_amount)
 	exprience.value = expr
-	
+
 	if choosen_weapon_amount != 3:
 		if level % 10 == 0:
 			$"CanvasLayer/WEAPON CHOOSE".show()
-			emit_signal("game_paused")
+			emit_signal("game_paused", false)
+			choosen_weapon_amount += 1
 	#print(max_exp)
 	#print($Exp.max_value)
 	
@@ -106,3 +107,8 @@ func _on_cardscorch_seal_pressed():
 	$CanvasGroup.add_child(scorch_seal)
 	$"CanvasLayer/WEAPON CHOOSE/VBoxContainer/HBoxContainer/card-Scorch-seal/Card-scorchSeal".disabled = true
 	hide_canvas_choose()
+
+func level_counter():
+	level += 1
+	$CanvasLayer/level_counter.text = 'Level: %01d' % [level]
+	
