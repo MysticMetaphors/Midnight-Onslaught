@@ -1,16 +1,22 @@
 extends Node2D
 
-@export var damage_amount = 20.0
-@export var damage_interval = 1.0 
+@export var damage_amount = 3.0
+@export var damage_interval = 0.5 
 @export var damage_timer = 0.0 
 
-@onready var player = get_parent()
+@onready var player = get_tree().get_first_node_in_group("Player")
 
 var enemies_in_area = [] 
 
 func _ready():
-	player.connect("player_level_up", damage_increase)
-	
+	if player:
+		player.connect("player_level_up", damage_increase)
+
+func damage_increase(amount):
+	if player:
+		damage_amount += damage_amount * amount
+		print("Leveled ", damage_amount)
+		
 func _process(delta):
 	damage_timer -= delta
 
@@ -28,8 +34,5 @@ func _on_area_2d_body_exited(body):
 	if body in enemies_in_area:
 		enemies_in_area.erase(body)
 
-func damage_increase(amount):
-	if is_instance_valid(player):
-		damage_amount += damage_amount * amount
-		print("Leveled ", damage_amount)
+
 	

@@ -1,16 +1,16 @@
 extends Area2D
 
-var attack_power = 20
+var attack_power = 7.0
 var enemy_hit = false
 var distance = 0
 
-@onready var player = get_parent()
-
+@onready var player = get_tree().get_first_node_in_group("Player")
 func _ready():
-	player.connect("player_level_up", damage_increase)
+	if player:
+		player.connect("player_level_up", damage_increase)
 
 func damage_increase(amount):
-	if is_instance_valid(player):
+	if player:
 		attack_power += attack_power * amount
 		#print("Leveled ", attack_power)
 

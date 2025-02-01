@@ -17,6 +17,7 @@ var expr: float = 0.0
 var level: int = 1
 
 var choosen_weapon_amount: int = 0
+var can_choose = true
 
 signal player_died
 signal player_level_up(increase_amount)
@@ -59,7 +60,7 @@ func player_take_damage(amount):
 	health -= amount
 	$CanvasLayer/health.value = health
 	#print(health)
-	if health <= 0 or Input.is_action_just_pressed("die"):
+	if health <= 0:
 		#print("die")
 		emit_signal("player_died")
 		viewport_instance.global_position = $".".global_position
@@ -78,10 +79,15 @@ func _on_player_level_up(exp_amount):
 	exprience.value = expr
 
 	if choosen_weapon_amount != 3:
-		if level % 10 == 0:
+		if level % 5 == 0:
 			$"CanvasLayer/WEAPON CHOOSE".show()
-			emit_signal("game_paused", false)
+			emit_signal("game_paused", true)
 			choosen_weapon_amount += 1
+			can_choose = false
+		else:
+			if level % 5 != 0:
+				can_choose = false
+
 	#print(max_exp)
 	#print($Exp.max_value)
 	

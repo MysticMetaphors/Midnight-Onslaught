@@ -179,6 +179,7 @@ _data = {
 
 [sub_resource type="LabelSettings" id="LabelSettings_6wiv0"]
 font = ExtResource("10_5u8br")
+font_size = 27
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rtl3"]
 bg_color = Color(0, 0.154945, 0.376521, 1)
@@ -277,10 +278,10 @@ limit_smoothed = false
 layer = 3
 
 [node name="level_counter" type="Label" parent="CanvasLayer"]
-offset_left = 158.0
-offset_top = 51.0
-offset_right = 208.0
-offset_bottom = 74.0
+offset_left = 153.0
+offset_top = 47.0
+offset_right = 237.0
+offset_bottom = 70.0
 text = "Level: 0"
 label_settings = SubResource("LabelSettings_6wiv0")
 

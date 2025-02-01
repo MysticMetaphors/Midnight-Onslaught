@@ -63,18 +63,32 @@ grow_vertical = 2
 texture = ExtResource("1_e7cor")
 region_rect = Rect2(52, 67, 8, 7)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer/VBoxContainer"]
+[node name="HDR" type="HBoxContainer" parent="HBoxContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HDR" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="HDR" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/HDR"]
 layout_mode = 2
 text = "HDR"
 label_settings = SubResource("LabelSettings_y25er")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CheckButton" type="CheckButton" parent="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="CheckButton" type="CheckButton" parent="HBoxContainer/PanelContainer/VBoxContainer/HDR"]
+layout_mode = 2
+
+[node name="Audio" type="HBoxContainer" parent="HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HDR" type="Label" parent="HBoxContainer/PanelContainer/VBoxContainer/Audio"]
+layout_mode = 2
+text = "AUDIO"
+label_settings = SubResource("LabelSettings_y25er")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Audio" type="CheckButton" parent="HBoxContainer/PanelContainer/VBoxContainer/Audio"]
 layout_mode = 2
 
 [connection signal="pressed" from="HBoxContainer/PanelContainer/VBoxContainer/EXIT" to="." method="_on_exit_pressed"]
-[connection signal="toggled" from="HBoxContainer/PanelContainer/VBoxContainer/HBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="HBoxContainer/PanelContainer/VBoxContainer/HDR/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="HBoxContainer/PanelContainer/VBoxContainer/Audio/Audio" to="." method="_on_audio_toggled"]

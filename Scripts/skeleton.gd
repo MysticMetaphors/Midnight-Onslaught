@@ -10,11 +10,15 @@ const SPEED = 50
 signal enemy_died(exp_amount)
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var health = 100.0
+var health = 20.0
 var player_in = true
 
 var can_attack = true
 var moving = true
+
+func _ready():
+	$ProgressBar.value = health
+	$ProgressBar.max_value = health
 
 func _physics_process(delta):
 	#var direction = to_local(path.get_next_path_position()).normalized()

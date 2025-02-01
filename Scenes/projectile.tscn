@@ -41,7 +41,7 @@ scale_curve = SubResource("CurveTexture_rylja")
 color = Color(0.600427, 0.665042, 0.30835, 1)
 color_ramp = SubResource("GradientTexture1D_2sbyy")
 
-[node name="projectile" type="Area2D"]
+[node name="projectile" type="Area2D" groups=["allow_pause"]]
 rotation = -0.00711913
 collision_layer = 0
 collision_mask = 16
