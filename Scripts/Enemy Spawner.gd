@@ -33,7 +33,8 @@ func spawner():
 		selected_object.connect("enemy_died", _on_exp_gain)
 
 func _on_timer_timeout():
-	spawner()
+	if bodies < max_bodies:
+		spawner()
 
 func _on_game_end():
 	#print("stopped_spawning")
@@ -41,7 +42,7 @@ func _on_game_end():
 
 func _on_game_pause(pause: bool):
 	var objects_pause = get_tree().get_nodes_in_group("allow_pause")
-	
+
 	for each in objects_pause:
 		each.set_process(!pause)
 		each.set_physics_process(!pause)

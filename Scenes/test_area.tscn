@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://dm35y6wcuhk8s"]
+[gd_scene load_steps=8 format=3 uid="uid://dm35y6wcuhk8s"]
 
 [ext_resource type="PackedScene" uid="uid://bgx151r00tlsu" path="res://Entities-Scene/player.tscn" id="1_r0b3k"]
 [ext_resource type="Script" path="res://Scripts/test_dummy.gd" id="2_7ym20"]
 [ext_resource type="Shader" path="res://Scenes/test_shade.gdshader" id="2_dv2j7"]
 [ext_resource type="Texture2D" uid="uid://bx6wssiy3a4dy" path="res://icon.svg" id="3_xmoei"]
-[ext_resource type="PackedScene" uid="uid://cpx32uwbc4l46" path="res://Entities-Scene/enemy_temp.tscn" id="4_6fau8"]
-[ext_resource type="PackedScene" uid="uid://c7bg53ln23nv3" path="res://Entities-Scene/skeleton.tscn" id="5_13vas"]
+[ext_resource type="PackedScene" uid="uid://c8c212w51dmn8" path="res://Entities-Scene/level_points.tscn" id="5_cxor7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5jnfa"]
 shader = ExtResource("2_dv2j7")
@@ -17,6 +16,7 @@ shader = ExtResource("2_dv2j7")
 [node name="Player" parent="." instance=ExtResource("1_r0b3k")]
 
 [node name="Test_dummy" type="CharacterBody2D" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_5jnfa")
 position = Vector2(284, 219)
 script = ExtResource("2_7ym20")
@@ -29,8 +29,20 @@ texture = ExtResource("3_xmoei")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Test_dummy"]
 shape = SubResource("CircleShape2D_58iyt")
 
-[node name="enemy_temp" parent="." instance=ExtResource("4_6fau8")]
-position = Vector2(380, 145)
+[node name="Level_points" parent="." instance=ExtResource("5_cxor7")]
+position = Vector2(302, 342)
 
-[node name="Skeleton" parent="." instance=ExtResource("5_13vas")]
-position = Vector2(293, 295)
+[node name="Level_points2" parent="." instance=ExtResource("5_cxor7")]
+position = Vector2(297, 297)
+
+[node name="Level_points3" parent="." instance=ExtResource("5_cxor7")]
+position = Vector2(313, 262)
+
+[node name="Level_points4" parent="." instance=ExtResource("5_cxor7")]
+position = Vector2(247, 287)
+
+[node name="Level_points5" parent="." instance=ExtResource("5_cxor7")]
+position = Vector2(251, 326)
+
+[node name="Level_points6" parent="." instance=ExtResource("5_cxor7")]
+position = Vector2(268, 301)

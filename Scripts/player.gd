@@ -78,16 +78,13 @@ func _on_player_level_up(exp_amount):
 		emit_signal("player_level_up", increase_amount)
 	exprience.value = expr
 
-	if choosen_weapon_amount != 3:
-		if level % 5 == 0:
-			$"CanvasLayer/WEAPON CHOOSE".show()
-			emit_signal("game_paused", true)
-			choosen_weapon_amount += 1
-			can_choose = false
-		else:
-			if level % 5 != 0:
-				can_choose = false
-
+	if choosen_weapon_amount < 3 and level % 5 == 0:
+		$"CanvasLayer/WEAPON CHOOSE".show()
+		emit_signal("game_paused", true)
+		choosen_weapon_amount += 1
+		can_choose = false
+	else:
+		can_choose = false
 	#print(max_exp)
 	#print($Exp.max_value)
 	
@@ -117,4 +114,7 @@ func _on_cardscorch_seal_pressed():
 func level_counter():
 	level += 1
 	$CanvasLayer/level_counter.text = 'Level: %01d' % [level]
-	
+
+func _on_exp_collect_area_body_entered(body):
+	if body.has_method("set_processes"):
+		body.set_physics_process(true)

@@ -34,9 +34,10 @@ enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/fi
 [global_group]
 
 enemy=""
-Particle="prevent from being paused during Engine.time_scale = 0"
 allow_pause=""
 Player=""
+Level_points="prevent from being paused during Engine.time_scale = 0"
+Particle=""
 
 [input]
 

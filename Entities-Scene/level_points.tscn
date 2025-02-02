@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8c212w51dmn8"]
+
+[ext_resource type="Texture2D" uid="uid://d2uofgd0yt4l3" path="res://Assets/Torch/candleA_02.png" id="1_833tk"]
+[ext_resource type="Script" path="res://Entities-Scene/level_points.gd" id="1_b61du"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jf4s1"]
+radius = 3.16228
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o4x8n"]
+radius = 4.0
+
+[node name="Level_points" type="CharacterBody2D" groups=["Level_points"]]
+script = ExtResource("1_b61du")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_833tk")
+region_enabled = true
+region_rect = Rect2(0, 0, 7, 7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_jf4s1")
+disabled = true
+
+[node name="level" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="level"]
+shape = SubResource("CircleShape2D_o4x8n")
+
+[connection signal="body_entered" from="level" to="." method="_on_level_body_entered"]
