@@ -284,7 +284,6 @@ shape = SubResource("CircleShape2D_eg6r1")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 3
-visible = false
 
 [node name="level_counter" type="Label" parent="CanvasLayer"]
 offset_left = 153.0

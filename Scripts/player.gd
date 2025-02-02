@@ -117,4 +117,6 @@ func level_counter():
 
 func _on_exp_collect_area_body_entered(body):
 	if body.has_method("set_processes"):
-		body.set_physics_process(true)
+		body.set_processes(true)
+	else:
+		printerr("Body does not have method set_processes")

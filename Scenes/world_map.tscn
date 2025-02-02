@@ -2898,7 +2898,6 @@ tile_set = SubResource("TileSet_me0qh")
 
 [node name="Player" parent="." instance=ExtResource("2_wylrd")]
 position = Vector2(578, 351)
-health = 100.0
 
 [node name="Path2D" type="Path2D" parent="." groups=["allow_pause"]]
 position = Vector2(71.3778, 208.109)

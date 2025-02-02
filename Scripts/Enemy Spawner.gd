@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var player_check = $Player
 @onready var pause_menu = $"UI/PAUSE-menu"
+@onready var level_points = get_tree().get_nodes_in_group("Level_points")
 
 var bodies = 0
 var max_bodies = 40
@@ -13,6 +14,11 @@ func _ready():
 	if is_instance_valid(player_check) and player_check.has_signal("game_paused"):
 		player_check.connect("game_paused", _on_game_pause)
 		player_check.connect("player_died", _on_game_end)
+
+func _process(delta):
+	if is_instance_valid(level_points):
+		level_points.connect("picked", _on_exp_gain)
+		level_points.connect("enemy_died")
 
 func spawner():
 	var enemy_skeleton = preload("res://Entities-Scene/skeleton.tscn").instantiate()
@@ -28,9 +34,6 @@ func spawner():
 		call_deferred("add_child", selected_object)
 		bodies += 1
 		#print(selected_object)
-		
-	if selected_object:
-		selected_object.connect("enemy_died", _on_exp_gain)
 
 func _on_timer_timeout():
 	if bodies < max_bodies:
@@ -41,6 +44,7 @@ func _on_game_end():
 	$Path2D/Timer.stop()
 
 func _on_game_pause(pause: bool):
+	
 	var objects_pause = get_tree().get_nodes_in_group("allow_pause")
 
 	for each in objects_pause:
@@ -60,10 +64,12 @@ func _on_game_pause(pause: bool):
 				timer.paused = pause
 	#print("Paused Successfully")
 
+func enemy_population_handler():
+	bodies -= 1
+	
 func _on_exp_gain(exp_amount):
 	if is_instance_valid(player_check):
 		player_check._on_player_level_up(exp_amount)
-		bodies -= 1
 	#$CanvasLayer/Label.text = '%03d' % [bodies]
 
 func _on_spawn_controller_timeout():

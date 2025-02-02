@@ -7,8 +7,6 @@ const SPEED = 50
 @export var attack = 20.0
 @export var exp_amount: float = 20.0
 
-signal enemy_died(exp_amount)
-
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var health = 10.0
 var player_in = true
@@ -44,10 +42,12 @@ func enemy_take_damage(amount):
 	
 func die():
 	var death = preload("res://Scenes/death_scene.tscn").instantiate()
+	var level_point = preload("res://Entities-Scene/level_points.tscn").instantiate()
 	death.global_position = $".".global_position
+	level_point.global_position = $".".global_position
 	get_parent().add_child(death)
+	get_parent().add_child(level_point)
 	opt_death()
-	emit_signal("enemy_died", exp_amount)
 
 func opt_death():
 	$Hitbox.disabled = true
