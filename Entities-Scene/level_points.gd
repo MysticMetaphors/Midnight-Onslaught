@@ -8,6 +8,7 @@ signal enemy_died
 signal picked(exp_amount)
 
 func _ready():
+	await get_tree().create_timer(0.3).timeout
 	emit_signal("enemy_died")
 
 func _physics_process(delta):
@@ -20,6 +21,7 @@ func _physics_process(delta):
 func _on_level_body_entered(body):
 	if body.has_method("_on_player_level_up"):
 		emit_signal("picked", exp_amount)
+		$CollisionShape2D.disabled = true
 		$level/CollisionShape2D.disabled = true
 		self.set_physics_process(false)
 		self.hide()

@@ -2,8 +2,8 @@ extends Node2D
 
 @onready var player_check = $Player
 @onready var pause_menu = $"UI/PAUSE-menu"
-@onready var level_points = get_tree().get_nodes_in_group("Level_points")
 
+var lvl_points_con: Array = []
 var bodies = 0
 var max_bodies = 40
 
@@ -16,9 +16,16 @@ func _ready():
 		player_check.connect("player_died", _on_game_end)
 
 func _process(delta):
-	if is_instance_valid(level_points):
-		level_points.connect("picked", _on_exp_gain)
-		level_points.connect("enemy_died")
+	var level_points = get_tree().get_nodes_in_group("Level_points")
+	if level_points:
+		for i in level_points:
+			if i not in lvl_points_con: 
+				i.connect("picked", _on_exp_gain)
+				i.connect("enemy_died", enemy_population_handler)
+				lvl_points_con.append(i)
+			#printerr("found: ", get_tree().get_node_count_in_group("Level_points"))
+	#else:
+		#printerr("not found")
 
 func spawner():
 	var enemy_skeleton = preload("res://Entities-Scene/skeleton.tscn").instantiate()
@@ -44,9 +51,7 @@ func _on_game_end():
 	$Path2D/Timer.stop()
 
 func _on_game_pause(pause: bool):
-	
 	var objects_pause = get_tree().get_nodes_in_group("allow_pause")
-
 	for each in objects_pause:
 		each.set_process(!pause)
 		each.set_physics_process(!pause)
@@ -66,6 +71,8 @@ func _on_game_pause(pause: bool):
 
 func enemy_population_handler():
 	bodies -= 1
+	print("bodies: ", bodies)
+	print("max_bodies: ", max_bodies)
 	
 func _on_exp_gain(exp_amount):
 	if is_instance_valid(player_check):

@@ -87,7 +87,7 @@ func _on_player_level_up(exp_amount):
 		can_choose = false
 	#print(max_exp)
 	#print($Exp.max_value)
-	
+
 func hide_canvas_choose():
 	$"CanvasLayer/WEAPON CHOOSE".hide()
 	emit_signal("game_paused", false)
@@ -118,5 +118,3 @@ func level_counter():
 func _on_exp_collect_area_body_entered(body):
 	if body.has_method("set_processes"):
 		body.set_processes(true)
-	else:
-		printerr("Body does not have method set_processes")
