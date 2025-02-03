@@ -13,7 +13,11 @@ func _physics_process(_delta):
 		
 func shoot_enemy():
 	var projectile_instance = preload("res://Scenes/projectile.tscn").instantiate()
-	call_deferred("add_child", projectile_instance)
+	projectile_instance.player_is_target = true
+	projectile_instance.enemy_is_target = false
+	projectile_instance.SPEED = 200
+	projectile_instance.col_mask = [1, true]
+	get_parent().add_child(projectile_instance)
 	
 func _on_timer_timeout():
 	if shooting:

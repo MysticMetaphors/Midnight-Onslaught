@@ -38,6 +38,7 @@ allow_pause=""
 Player=""
 Level_points="prevent from being paused during Engine.time_scale = 0"
 Particle=""
+enemy_shooter=""
 
 [input]
 
