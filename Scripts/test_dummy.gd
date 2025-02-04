@@ -9,7 +9,7 @@ func _physics_process(delta):
 	var distance_to_player = position.distance_to(player.position)
 	
 	position += direction * SPEED * delta
-	print(world)
+	#print(world)
 	move_and_slide()
 
 func overtime_hp_increase():

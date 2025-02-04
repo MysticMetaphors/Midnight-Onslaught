@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Entities-Scene/pivot.gd" id="4_lwk7w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6xixb"]
+radius = 8.06226
 
 [sub_resource type="Animation" id="Animation_hs7ad"]
 length = 0.001
@@ -148,8 +149,8 @@ radius = 12.0
 radius = 185.011
 
 [node name="Bat" type="CharacterBody2D" groups=["allow_pause", "enemy", "enemy_shooter"]]
-collision_layer = 2
-collision_mask = 18
+collision_layer = 18
+collision_mask = 2
 script = ExtResource("1_fd5df")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -180,7 +181,7 @@ show_percentage = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_om4ra")
 
-[node name="pivot" type="Area2D" parent="."]
+[node name="pivot" type="Area2D" parent="." groups=["allow_pause"]]
 script = ExtResource("4_lwk7w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pivot"]

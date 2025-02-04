@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bumn8sue3po86"]
+[gd_scene load_steps=7 format=3 uid="uid://bumn8sue3po86"]
 
 [ext_resource type="Script" path="res://Scripts/projectile.gd" id="1_pwmsf"]
 
@@ -7,13 +7,6 @@ radius = 5.09902
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fro8q"]
 blend_mode = 1
-
-[sub_resource type="Gradient" id="Gradient_gv47k"]
-offsets = PackedFloat32Array(0, 0.663934, 1)
-colors = PackedColorArray(0.797587, 0.392911, 0, 1, 0.889109, 0.297098, 0, 1, 0.184306, 0.0249159, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_2sbyy"]
-gradient = SubResource("Gradient_gv47k")
 
 [sub_resource type="Curve" id="Curve_pvuox"]
 _data = [Vector2(0.0942029, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.593407), 0.0, 0.0, 0, 0]
@@ -27,8 +20,7 @@ particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 11.07
 angle_min = -109.5
-radial_velocity_max = 64.31
-gravity = Vector3(0, -98, 0)
+gravity = Vector3(0, 0, 0)
 linear_accel_min = -56.6
 linear_accel_max = -56.6
 radial_accel_min = 24.1
@@ -36,10 +28,10 @@ radial_accel_max = 26.51
 tangential_accel_min = -10.68
 tangential_accel_max = 23.06
 scale_min = 0.0
-scale_max = 3.14
+scale_max = 10.0
 scale_curve = SubResource("CurveTexture_rylja")
-color = Color(0.600427, 0.665042, 0.30835, 1)
-color_ramp = SubResource("GradientTexture1D_2sbyy")
+color = Color(0.797587, 0.392911, 0, 1)
+turbulence_noise_strength = 20.0
 
 [node name="projectile" type="Area2D" groups=["allow_pause"]]
 rotation = -0.00711913
@@ -59,10 +51,11 @@ scale = Vector2(-0.796726, -0.798452)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="particle_boss_proj"]
 material = SubResource("CanvasItemMaterial_fro8q")
-position = Vector2(-9.53674e-07, -9.53674e-07)
 amount = 2000
 process_material = SubResource("ParticleProcessMaterial_vlh5k")
 lifetime = 0.3
-speed_scale = 6.0
+speed_scale = 3.0
+randomness = 1.0
+trail_enabled = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

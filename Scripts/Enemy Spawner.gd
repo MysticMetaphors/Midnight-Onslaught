@@ -71,8 +71,8 @@ func _on_game_pause(pause: bool):
 
 func enemy_population_handler():
 	bodies -= 1
-	print("bodies: ", bodies)
-	print("max_bodies: ", max_bodies)
+	#print("bodies: ", bodies)
+	#print("max_bodies: ", max_bodies)
 	
 func _on_exp_gain(exp_amount):
 	if is_instance_valid(player_check):

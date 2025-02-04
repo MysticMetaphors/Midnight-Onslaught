@@ -48,11 +48,13 @@ func die():
 	opt_death()
 
 func opt_death():
+	$pivot/CollisionShape2D.disabled = true
 	$CollisionShape2D.disabled = true
 	$Area2D/CollisionShape2D.disabled = true
+	$Timer.paused =true
 	self.set_process(false)
 	self.set_physics_process(false)
-	$".".hide()
+	
 	
 func _on_attack_body_entered(body):
 	if body.has_method("player_take_damage") and can_attack:

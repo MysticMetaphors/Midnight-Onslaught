@@ -18,7 +18,7 @@ func _ready():
 		player.connect("player_level_up", damage_increase)
 
 	self.set_collision_mask_value(col_mask[0], col_mask[1])
-
+	$particle_boss_proj/GPUParticles2D
 func damage_increase(amount):
 	if player:
 		attack_power += attack_power * amount
@@ -26,11 +26,12 @@ func damage_increase(amount):
 
 func _physics_process(delta):
 	var dir = Vector2.RIGHT.rotated(rotation)
-	position += dir * 700 * delta
+	position += dir * SPEED * delta
 	distance += SPEED * delta
 
 	if RANGE <= SPEED:
 		queue_free()
+	
 func _on_body_entered(body):
 	var enemies_body = body.has_method("enemy_take_damage")
 	var player_body = body.has_method("player_take_damage") 

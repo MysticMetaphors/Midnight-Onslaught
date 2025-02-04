@@ -8,7 +8,7 @@ radius = 274.046
 [node name="projectile_launcher" type="Node2D" groups=["allow_pause"]]
 
 [node name="Area2D" type="Area2D" parent="." groups=["allow_pause"]]
-collision_layer = 0
+collision_layer = 16
 collision_mask = 16
 script = ExtResource("1_ewvro")
 

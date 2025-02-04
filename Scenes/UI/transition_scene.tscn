@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://de6e1ngwcvrat"]
 
 [sub_resource type="Gradient" id="Gradient_hkjyp"]
-offsets = PackedFloat32Array(0, 0.643137, 1)
-colors = PackedColorArray(0.797587, 0.392911, 0, 1, 0.889109, 0.297098, 0, 1, 0.184306, 0.0249159, 0, 1)
+offsets = PackedFloat32Array(0, 0.354167, 0.6875, 1)
+colors = PackedColorArray(1, 0.51579, 0.110877, 1, 0.84698, 0.341202, 0, 1, 0.889109, 0.297098, 0, 1, 0.184306, 0.0249159, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_47rjd"]
 gradient = SubResource("Gradient_hkjyp")
@@ -21,6 +21,7 @@ emission_box_extents = Vector3(1200, 1, 1)
 gravity = Vector3(0, -10, 0)
 scale_max = 10.0
 scale_curve = SubResource("CurveTexture_fxb1p")
+color = Color(0.872311, 0.929422, 0.673168, 1)
 color_ramp = SubResource("GradientTexture1D_47rjd")
 
 [sub_resource type="Animation" id="Animation_qxm5f"]

@@ -16,6 +16,7 @@ shader = ExtResource("2_dv2j7")
 [node name="Player" parent="." instance=ExtResource("1_r0b3k")]
 
 [node name="Test_dummy" type="CharacterBody2D" parent="." groups=["allow_pause"]]
+visible = false
 material = SubResource("ShaderMaterial_5jnfa")
 position = Vector2(284, 219)
 script = ExtResource("2_7ym20")
