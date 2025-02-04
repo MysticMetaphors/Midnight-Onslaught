@@ -6,6 +6,7 @@ extends Node2D
 var lvl_points_con: Array = []
 var bodies = 0
 var max_bodies = 40
+var bodies_spawn_pos = null
 
 func _ready():
 	_on_game_pause(true)
@@ -30,8 +31,9 @@ func _process(delta):
 func spawner():
 	var enemy_skeleton = preload("res://Entities-Scene/skeleton.tscn").instantiate()
 	var enemy_scene = preload("res://Entities-Scene/enemy_temp.tscn").instantiate()
+	var enemy_bat = preload("res://Entities-Scene/bat.tscn").instantiate()
 	
-	var enem_arr: Array = [enemy_skeleton, enemy_scene]
+	var enem_arr: Array = [enemy_skeleton, enemy_scene, enemy_bat]
 	var selecting_Object = randi() % enem_arr.size()
 	var selected_object = enem_arr[selecting_Object]
 	
@@ -42,13 +44,13 @@ func spawner():
 		bodies += 1
 		#print(selected_object)
 
-func _on_timer_timeout():
+func _on_ground_timeout():
 	if bodies < max_bodies:
 		spawner()
 
 func _on_game_end():
 	#print("stopped_spawning")
-	$Path2D/Timer.stop()
+	$Path2D/Ground.stop()
 
 func _on_game_pause(pause: bool):
 	var objects_pause = get_tree().get_nodes_in_group("allow_pause")
@@ -81,12 +83,12 @@ func _on_exp_gain(exp_amount):
 
 func _on_spawn_controller_timeout():
 	max_bodies += 10
-	if $Path2D/Timer.wait_time <= 0.2:
-		$Path2D/Timer.wait_time = 0.1
+	if $Path2D/Ground.wait_time <= 0.2:
+		$Path2D/Ground.wait_time = 0.1
 		$Path2D/Spawn_Controller.stop()
 		#print("last_update: ", $Path2D/Timer.wait_time)
 	else: 
-		$Path2D/Timer.wait_time -= 0.2
+		$Path2D/Ground.wait_time -= 0.2
 		#print("wait_time set to: ", $Path2D/Timer.wait_time)
 
 func _on_audio_stream_player_finished():

@@ -50,6 +50,7 @@ rotation = 0.0389406
 scale = Vector2(-0.796726, -0.798452)
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="particle_boss_proj"]
+modulate = Color(0.376471, 0.105882, 0, 1)
 material = SubResource("CanvasItemMaterial_fro8q")
 amount = 2000
 process_material = SubResource("ParticleProcessMaterial_vlh5k")

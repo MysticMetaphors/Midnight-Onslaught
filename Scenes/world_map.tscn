@@ -2906,7 +2906,7 @@ curve = SubResource("Curve2D_dobpx")
 position = Vector2(-176, 951.676)
 rotation = -0.00743145
 
-[node name="Timer" type="Timer" parent="Path2D" groups=["allow_pause"]]
+[node name="Ground" type="Timer" parent="Path2D" groups=["allow_pause"]]
 wait_time = 0.8
 autostart = true
 
@@ -2947,7 +2947,7 @@ offset_top = 54.0
 offset_right = -123.0
 offset_bottom = -566.0
 
-[connection signal="timeout" from="Path2D/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Path2D/Ground" to="." method="_on_ground_timeout"]
 [connection signal="timeout" from="Path2D/Spawn_Controller" to="." method="_on_spawn_controller_timeout"]
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
 [connection signal="pressed" from="UI/PAUSE_BUTTON" to="." method="_on_pause_button_pressed"]

@@ -143,10 +143,10 @@ bg_color = Color(0, 0, 0, 1)
 bg_color = Color(0.419608, 0, 0.0784314, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_om4ra"]
-radius = 12.0
+radius = 239.019
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h1trd"]
-radius = 185.011
+radius = 240.019
 
 [node name="Bat" type="CharacterBody2D" groups=["allow_pause", "enemy", "enemy_shooter"]]
 collision_layer = 18
@@ -176,9 +176,9 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_7kfb6")
 value = 100.0
 show_percentage = false
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Player_detect" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_detect"]
 shape = SubResource("CircleShape2D_om4ra")
 
 [node name="pivot" type="Area2D" parent="." groups=["allow_pause"]]
@@ -188,8 +188,8 @@ script = ExtResource("4_lwk7w")
 shape = SubResource("CircleShape2D_h1trd")
 
 [node name="Timer" type="Timer" parent="." groups=["allow_pause"]]
-wait_time = 3.0
 autostart = true
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Player_detect" to="." method="_on_player_detect_body_entered"]
+[connection signal="body_exited" from="Player_detect" to="." method="_on_player_detect_body_exited"]
 [connection signal="timeout" from="Timer" to="pivot" method="_on_timer_timeout"]

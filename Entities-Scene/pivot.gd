@@ -1,15 +1,12 @@
 extends Area2D
 
-var shooting = true
+var shooting = false
 
 func _physics_process(_delta):
 	var player = get_tree().get_first_node_in_group("Player")
 	if player:
-		shooting = true
 		var lock_target = player
 		look_at(lock_target.global_position)
-	else:
-		shooting = false
 		
 func shoot_enemy():
 	var projectile_instance = preload("res://Scenes/projectile.tscn").instantiate()
@@ -24,6 +21,7 @@ func shoot_enemy():
 	projectile_instance.enemy_is_target = false
 	projectile_instance.SPEED = 200
 	projectile_instance.col_mask = [1, true]
+	projectile_instance.color = Color(0.133, 0.133, 0.133)
 	
 	for i in range(2):
 		if root_parent:

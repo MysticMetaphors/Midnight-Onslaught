@@ -7,7 +7,6 @@ const SPEED = 20
 @export var attack = 20.0
 @export var exp_amount: float = 20.0
 
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var health = 10.0
 var player_in = true
 
@@ -50,11 +49,11 @@ func die():
 func opt_death():
 	$pivot/CollisionShape2D.disabled = true
 	$CollisionShape2D.disabled = true
-	$Area2D/CollisionShape2D.disabled = true
+	$Player_detect/CollisionShape2D.disabled = true
 	$Timer.paused =true
 	self.set_process(false)
 	self.set_physics_process(false)
-	
+	$".".hide()
 	
 func _on_attack_body_entered(body):
 	if body.has_method("player_take_damage") and can_attack:
@@ -62,3 +61,11 @@ func _on_attack_body_entered(body):
 		body.player_take_damage(attack)
 		can_attack = false
 		can_attack = true
+
+func _on_player_detect_body_entered(body):
+	if body.is_in_group("Player"):
+		$pivot.shooting = true
+
+func _on_player_detect_body_exited(body):
+	if body.is_in_group("Player"):
+		$pivot.shooting = false

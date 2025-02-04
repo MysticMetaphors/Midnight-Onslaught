@@ -10,6 +10,7 @@ var enemy_hit = false
 var distance = 0
 var RANGE = 1000
 var SPEED = 500
+var color = null
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 
@@ -18,7 +19,8 @@ func _ready():
 		player.connect("player_level_up", damage_increase)
 
 	self.set_collision_mask_value(col_mask[0], col_mask[1])
-	$particle_boss_proj/GPUParticles2D
+	if color:
+		$particle_boss_proj/GPUParticles2D.self_modulate = color
 func damage_increase(amount):
 	if player:
 		attack_power += attack_power * amount
