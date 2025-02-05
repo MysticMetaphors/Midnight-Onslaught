@@ -19,7 +19,8 @@ func shoot_enemy():
 	#Change status/var here
 	projectile_instance.player_is_target = true
 	projectile_instance.enemy_is_target = false
-	projectile_instance.SPEED = 200
+	projectile_instance.SPEED = 100
+	projectile_instance.RANGE = 200
 	projectile_instance.col_mask = [1, true]
 	projectile_instance.color = Color(0.133, 0.133, 0.133)
 	
@@ -35,3 +36,4 @@ func shoot_enemy():
 func _on_timer_timeout():
 	if shooting:
 		shoot_enemy()
+		#printerr("shoot")

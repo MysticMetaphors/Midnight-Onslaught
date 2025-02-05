@@ -67,6 +67,7 @@ func player_take_damage(amount):
 		get_parent().add_child(viewport_instance)
 		game_over_tcsn.global_position = $".".global_position
 		get_parent().add_child(game_over_tcsn)
+		emit_signal("game_paused", true)
 		queue_free()
 
 func _on_player_level_up(exp_amount):
@@ -112,7 +113,8 @@ func _on_cardscorch_seal_pressed():
 	hide_canvas_choose()
 
 func level_counter():
-	level += 1
+	if level != 1:
+		level += 1
 	$CanvasLayer/level_counter.text = 'Level: %01d' % [level]
 
 func _on_exp_collect_area_body_entered(body):

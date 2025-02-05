@@ -188,6 +188,7 @@ script = ExtResource("4_lwk7w")
 shape = SubResource("CircleShape2D_h1trd")
 
 [node name="Timer" type="Timer" parent="." groups=["allow_pause"]]
+wait_time = 2.0
 autostart = true
 
 [connection signal="body_entered" from="Player_detect" to="." method="_on_player_detect_body_entered"]

@@ -8,7 +8,7 @@ var col_mask = [5, true]
 
 var enemy_hit = false
 var distance = 0
-var RANGE = 1000
+var RANGE = 600
 var SPEED = 500
 var color = null
 
@@ -30,9 +30,10 @@ func _physics_process(delta):
 	var dir = Vector2.RIGHT.rotated(rotation)
 	position += dir * SPEED * delta
 	distance += SPEED * delta
-
-	if RANGE <= SPEED:
+	print("RANGE: ", RANGE, " SPEED: ", SPEED, " DISTANCE: ", distance)
+	if RANGE <= distance:
 		queue_free()
+		#printerr("freed")
 	
 func _on_body_entered(body):
 	var enemies_body = body.has_method("enemy_take_damage")
