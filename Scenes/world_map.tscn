@@ -2907,11 +2907,10 @@ position = Vector2(-176, 951.676)
 rotation = -0.00743145
 
 [node name="Ground" type="Timer" parent="Path2D" groups=["allow_pause"]]
-wait_time = 0.8
 autostart = true
 
 [node name="Spawn_Controller" type="Timer" parent="Path2D" groups=["allow_pause"]]
-wait_time = 20.0
+wait_time = 60.0
 autostart = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

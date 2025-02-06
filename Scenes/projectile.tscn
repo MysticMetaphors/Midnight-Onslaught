@@ -34,7 +34,7 @@ color = Color(0.797587, 0.392911, 0, 1)
 turbulence_noise_strength = 20.0
 
 [node name="projectile" type="Area2D" groups=["allow_pause"]]
-rotation = -3.03178
+rotation = -3.02682
 collision_layer = 16
 collision_mask = 16
 script = ExtResource("1_pwmsf")
@@ -52,6 +52,7 @@ scale = Vector2(-0.796726, -0.798452)
 [node name="GPUParticles2D" type="GPUParticles2D" parent="particle_boss_proj"]
 modulate = Color(0.376471, 0.105882, 0, 1)
 material = SubResource("CanvasItemMaterial_fro8q")
+rotation = -0.112508
 amount = 2000
 process_material = SubResource("ParticleProcessMaterial_vlh5k")
 lifetime = 0.3

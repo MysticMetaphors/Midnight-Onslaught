@@ -44,7 +44,7 @@ func die():
 	level_point.global_position = $".".global_position
 	get_parent().add_child(death)
 	get_parent().add_child(level_point)
-	opt_death()
+	queue_free()
 
 func opt_death():
 	$pivot/CollisionShape2D.disabled = true

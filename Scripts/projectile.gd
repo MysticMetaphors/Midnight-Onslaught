@@ -27,10 +27,10 @@ func damage_increase(amount):
 		#print("Leveled ", attack_power)
 
 func _physics_process(delta):
-	var dir = Vector2.RIGHT.rotated(rotation)
+	var dir = Vector2.LEFT.rotated(rotation - 0.1)
 	position += dir * SPEED * delta
 	distance += SPEED * delta
-	print("RANGE: ", RANGE, " SPEED: ", SPEED, " DISTANCE: ", distance)
+	#print("RANGE: ", RANGE, " SPEED: ", SPEED, " DISTANCE: ", distance)
 	if RANGE <= distance:
 		queue_free()
 		#printerr("freed")

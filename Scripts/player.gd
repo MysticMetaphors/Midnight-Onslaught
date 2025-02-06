@@ -113,7 +113,7 @@ func _on_cardscorch_seal_pressed():
 	hide_canvas_choose()
 
 func level_counter():
-	if level != 1:
+	if level >= 1:
 		level += 1
 	$CanvasLayer/level_counter.text = 'Level: %01d' % [level]
 

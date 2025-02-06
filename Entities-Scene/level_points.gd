@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @onready var player = get_tree().get_first_node_in_group("Player")
 var follow = false
-var exp_amount = 10.0
+var exp_amount = 7.0
 
 signal enemy_died
 signal picked(exp_amount)
